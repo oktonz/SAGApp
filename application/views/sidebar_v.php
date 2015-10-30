@@ -38,7 +38,7 @@
         </a>
         <ul class="treeview-menu">
           <li><a href="<?php echo base_url().'index.php/inventory/add_gudang';?>"><i class="fa fa-caret-right fa-fw"></i>Add Warehouse</a></li>
-          <li><a href="#"><i class="fa fa-caret-right fa-fw"></i>Add Product Category</a></li>
+          <li><a href="<?php echo base_url().'index.php/inventory/add_kategori';?>"><i class="fa fa-caret-right fa-fw"></i>Add Product Category</a></li>
           <li><a href="#"><i class="fa fa-caret-right fa-fw"></i>Add New Product</a></li>
           <li><a href="#"><i class="fa fa-caret-right fa-fw"></i>Product Receipt</a></li>
           <li><a href="#"><i class="fa fa-caret-right fa-fw"></i>Product Delivery</a></li>
