@@ -30,17 +30,19 @@
     <ul class="sidebar-menu">
       <li class="header">MAIN NAVIGATION</li>
       <!-- Optionally, you can add icons to the links -->
-      <li class="active"><a href="index.html"><i class="fa fa-dashboard"></i> <span>Dashboard</span></a></li>
+      <li class="active"><a href="<?php echo base_url().'index.php/home';?>"><i class="fa fa-dashboard"></i> <span>Dashboard</span></a></li>
       <li class="treeview">
         <a href="#">
           <i class="fa fa-cubes"></i> <span>Inventory Control</span>
           <i class="fa fa-angle-left pull-right"></i>
         </a>
         <ul class="treeview-menu">
-          <li><a href="add_produk.html"><i class="fa fa-caret-right fa-fw"></i>Add New Product</a></li>
+          <li><a href="<?php echo base_url().'index.php/inventory/add_gudang';?>"><i class="fa fa-caret-right fa-fw"></i>Add Warehouse</a></li>
+          <li><a href="#"><i class="fa fa-caret-right fa-fw"></i>Add Product Category</a></li>
+          <li><a href="#"><i class="fa fa-caret-right fa-fw"></i>Add New Product</a></li>
           <li><a href="#"><i class="fa fa-caret-right fa-fw"></i>Product Receipt</a></li>
           <li><a href="#"><i class="fa fa-caret-right fa-fw"></i>Product Delivery</a></li>
-          <li><a href="view_produk.html"><i class="fa fa-caret-right fa-fw"></i>Stock Card</a></li>
+          <li><a href="#"><i class="fa fa-caret-right fa-fw"></i>Stock Card</a></li>
         </ul>
       </li>
       <li class="treeview">

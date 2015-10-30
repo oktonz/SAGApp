@@ -1,6 +1,6 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
-class Home extends CI_Controller {
+class Inventory extends CI_Controller {
 
 	public function index()
 	{
@@ -12,7 +12,25 @@ class Home extends CI_Controller {
 				'sidebar' => $this->html_navigasi(),
 				'footer' => $this->html_footer()
 				);
-			$this->load->view('home_v', $komponen);
+			$this->load->view('addgudang_v', $komponen);
+		}
+		else
+		{
+			redirect('index.php/login');
+		}
+	}
+
+	public function add_gudang()
+	{
+		if($this->session->userdata('logged_in'))
+		{
+			$session_data = $this->session->userdata('logged_in');
+			$komponen = array(
+				'topbar' => $this->html_topbar(),
+				'sidebar' => $this->html_navigasi(),
+				'footer' => $this->html_footer()
+				);
+			$this->load->view('addgudang_v', $komponen);
 		}
 		else
 		{
@@ -44,24 +62,4 @@ class Home extends CI_Controller {
 		return $this->load->view('footer_v', $data, true);
 	}
 
-	public function search()
-	{
-		if($this->session->userdata('logged_in'))
-		{
-			$match = $this->input->post('txtsearch');
-			$session_data = $this->session->userdata('logged_in');
-			$cari = $this->search_model->get_search($match);
-			$komponen = array(
-				'topbar' => $this->html_topbar(),
-				'navigasi' => $this->html_navigasi(),
-				'footer' => $this->html_footer(),
-				'hasil' => $cari->result_array(),
-				);
-			$this->load->view('search_v', $komponen);
-		}
-		else
-		{
-			redirect('login');
-		}
-	}
 }
