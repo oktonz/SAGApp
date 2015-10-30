@@ -22,7 +22,10 @@ scratch. This page gets rid of all links and provides the needed markup only.
           page. However, you can choose any other skin. Make sure you
           apply the skin class to the body tag so the changes take effect.
     -->
-    <link rel="stylesheet" href="<?php echo base_url().'assets/dist/css/skins/';?>skin-red.min.css">
+    <link rel="stylesheet" href="<?php echo base_url().'assets/dist/css/skins/';?>skin-green.min.css">
+
+    <!-- The fav icon -->
+    <link rel="shortcut icon" href="<?php echo base_url().'assets/img/';?>favicon.png">
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -32,7 +35,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
     <![endif]-->
   </head>
   
-  <body class="hold-transition skin-red fixed sidebar-mini">
+  <body class="hold-transition skin-green fixed sidebar-mini">
     <div class="wrapper">
 
       <!-- Main Header -->

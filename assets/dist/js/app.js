@@ -206,6 +206,12 @@ $(function () {
     });
   }
 
+  //highlight current / active link
+    $('ul.sidebar-menu li a').each(function () {
+        if ($($(this))[0].href == String(window.location))
+            $(this).parent().addClass('active');
+    });
+
   /*
    * INITIALIZE BUTTON TOGGLE
    * ------------------------
