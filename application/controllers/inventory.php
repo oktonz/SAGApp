@@ -2,6 +2,13 @@
 
 class Inventory extends CI_Controller {
 
+	public function __construct()
+	{
+		parent::__construct();
+
+		$this->load->model('inventory_model');
+	}
+
 	public function index()
 	{
 		if($this->session->userdata('logged_in'))
@@ -38,6 +45,17 @@ class Inventory extends CI_Controller {
 		}
 	}
 
+	public function do_add_gudang()
+	{
+		$dat = array(
+			'kd_gudang' => $this->input->post('txtkdgudang'),
+			'nama_gudang' => $this->input->post('txtgudang'),
+			'ket_gudang' => $this->input->post('txtket')
+			);
+		$this->inventory_model->add_gudang($dat);
+		redirect('index.php/home');
+	}
+
 	public function add_kategori()
 	{
 		if($this->session->userdata('logged_in'))
@@ -54,6 +72,17 @@ class Inventory extends CI_Controller {
 		{
 			redirect('index.php/login');
 		}
+	}
+
+	public function do_add_kategori()
+	{
+		$dat = array(
+			'kd_kategori' => $this->input->post('txtkdkategori'),
+			'nama_kategori' => $this->input->post('txtkategori'),
+			'ket_kategori' => $this->input->post('txtket')
+			);
+		$this->inventory_model->add_kategori($dat);
+		redirect('index.php/home');
 	}
 
 	public function html_topbar()

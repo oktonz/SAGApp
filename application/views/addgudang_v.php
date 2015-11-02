@@ -7,7 +7,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>SAG | Dashboard</title>
+    <title>SAG | ADD WAREHOUSE</title>
     <!-- Tell the browser to be responsive to screen width -->
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
     <!-- Bootstrap 3.3.5 -->
@@ -56,7 +56,8 @@ scratch. This page gets rid of all links and provides the needed markup only.
           </h1>
           <ol class="breadcrumb">
             <li><a href="#"><i class="fa fa-dashboard"></i>SAG</a></li>
-            <li class="active">Dashboard</li>
+            <li>Inventory Control</li>
+            <li class="active">Add Warehouse</li>
           </ol>
         </section>
 
@@ -68,7 +69,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                   <h3 class="box-title">Add Warehouse</h3>
                 </div><!-- /.box-header -->
                 <!-- form start -->
-                <form class="form-horizontal">
+                <form class="form-horizontal" method="post" action="<?php echo base_url().'index.php/inventory/do_add_gudang';?>">
                   <div class="box-body">
                     <div class="form-group">
                       <label for="kd_gudang" class="col-sm-2 control-label">Warehouse ID</label>
