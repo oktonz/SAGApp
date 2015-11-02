@@ -74,7 +74,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                     <div class="form-group">
                       <label for="kd_gudang" class="col-sm-2 control-label">Warehouse ID</label>
                       <div class="col-sm-3">
-                        <input type="text" class="form-control" name="txtkdgudang" placeholder="Kode Gudang">
+                        <input type="text" class="form-control" name="txtkdgudang" placeholder="Kode Gudang" autofocus>
                       </div>
                     </div>
                     <div class="form-group">
