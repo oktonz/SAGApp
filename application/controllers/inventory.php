@@ -27,6 +27,26 @@ class Inventory extends CI_Controller {
 		}
 	}
 
+	public function view_gudang()
+	{
+		if($this->session->userdata('logged_in'))
+		{
+			$session_data = $this->session->userdata('logged_in');
+			$gudang = $this->inventory_model->get_gudang();
+			$komponen = array(
+				'topbar' => $this->html_topbar(),
+				'sidebar' => $this->html_navigasi(),
+				'footer' => $this->html_footer(),
+				'gudang' => $gudang->result_array()
+				);
+			$this->load->view('gudang_v', $komponen);
+		}
+		else
+		{
+			redirect('index.php/login');
+		}
+	}
+
 	public function add_gudang()
 	{
 		if($this->session->userdata('logged_in'))
@@ -54,6 +74,26 @@ class Inventory extends CI_Controller {
 			);
 		$this->inventory_model->add_gudang($dat);
 		redirect('index.php/home');
+	}
+
+	public function view_kategori()
+	{
+		if($this->session->userdata('logged_in'))
+		{
+			$session_data = $this->session->userdata('logged_in');
+			$kategori = $this->inventory_model->get_kategori();
+			$komponen = array(
+				'topbar' => $this->html_topbar(),
+				'sidebar' => $this->html_navigasi(),
+				'footer' => $this->html_footer(),
+				'kategori' => $kategori->result_array()
+				);
+			$this->load->view('kategori_v', $komponen);
+		}
+		else
+		{
+			redirect('index.php/login');
+		}
 	}
 
 	public function add_kategori()

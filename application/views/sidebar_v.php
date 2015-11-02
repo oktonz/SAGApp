@@ -37,8 +37,20 @@
           <i class="fa fa-angle-left pull-right"></i>
         </a>
         <ul class="treeview-menu">
-          <li><a href="<?php echo base_url().'index.php/inventory/add_gudang';?>"><i class="fa fa-caret-right fa-fw"></i>Add Warehouse</a></li>
-          <li><a href="<?php echo base_url().'index.php/inventory/add_kategori';?>"><i class="fa fa-caret-right fa-fw"></i>Add Product Category</a></li>
+          <li>
+            <a href="#"><i class="fa fa-caret-right fa-fw"></i>Warehouse <i class="fa fa-angle-left pull-right"></i></a>
+              <ul class="treeview-menu">
+                <li><a href="<?php echo base_url().'index.php/inventory/add_gudang';?>"><i class="fa fa-caret-right fa-fw"> Add Warehouse</i></a></li>
+                <li><a href="<?php echo base_url().'index.php/inventory/view_gudang';?>"><i class="fa fa-caret-right fa-fw"> View Warehouse</i></a></li>
+              </ul>
+          </li>
+          <li>
+            <a href="#"><i class="fa fa-caret-right fa-fw"></i>Product Category <i class="fa fa-angle-left pull-right"></i></a>
+            <ul class="treeview-menu">
+              <li><a href="<?php echo base_url().'index.php/inventory/add_kategori';?>"><i class="fa fa-caret-right fa-fw"> Add Category</i></a></li>
+              <li><a href="<?php echo base_url().'index.php/inventory/view_kategori';?>"><i class="fa fa-caret-right fa-fw"> View Category</i></a></li>
+            </ul>
+          </li>
           <li><a href="#"><i class="fa fa-caret-right fa-fw"></i>Add New Product</a></li>
           <li><a href="#"><i class="fa fa-caret-right fa-fw"></i>Product Receipt</a></li>
           <li><a href="#"><i class="fa fa-caret-right fa-fw"></i>Product Delivery</a></li>
