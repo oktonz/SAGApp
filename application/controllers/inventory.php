@@ -73,7 +73,7 @@ class Inventory extends CI_Controller {
 			'ket_gudang' => $this->input->post('txtket')
 			);
 		$this->inventory_model->add_gudang($dat);
-		redirect('index.php/home');
+		redirect('index.php/inventory/view_gudang');
 	}
 
 	public function view_kategori()
@@ -122,7 +122,7 @@ class Inventory extends CI_Controller {
 			'ket_kategori' => $this->input->post('txtket')
 			);
 		$this->inventory_model->add_kategori($dat);
-		redirect('index.php/home');
+		redirect('index.php/inventory/view_kategori');
 	}
 
 	public function html_topbar()
