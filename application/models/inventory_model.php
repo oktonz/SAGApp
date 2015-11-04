@@ -23,5 +23,16 @@ Class Inventory_model extends CI_Model
 	{
 		$this->db->insert('tbl_inkategori', $data);
 	}
+
+	function get_produk()
+	{
+		$data = $this->db->get('tbl_inproduk');
+		return $data;
+	}
+
+	function add_produk($data)
+	{
+		$this->db->insert('tbl_inproduk', $data);
+	}
 }
 ?>

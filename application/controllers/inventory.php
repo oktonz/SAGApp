@@ -125,20 +125,83 @@ class Inventory extends CI_Controller {
 		redirect('index.php/inventory/view_kategori');
 	}
 
+	public function add_produk()
+	{
+		if($this->session->userdata('logged_in'))
+		{
+			$session_data = $this->session->userdata('logged_in');
+			$gudang = $this->inventory_model->get_gudang();
+			$kategori = $this->inventory_model->get_kategori();
+			$komponen = array(
+				'topbar' => $this->html_topbar(),
+				'sidebar' => $this->html_navigasi(),
+				'footer' => $this->html_footer(),
+				'gudang' => $gudang->result_array(),
+				'kategori' => $kategori->result_array()
+				);
+			$this->load->view('addproduk_v', $komponen);
+		}
+		else
+		{
+			redirect('index.php/login');
+		}
+	}
+
+	public function view_produk()
+	{
+		if($this->session->userdata('logged_in'))
+		{
+			$session_data = $this->session->userdata('logged_in');
+			$produk = $this->inventory_model->get_produk();
+			$komponen = array(
+				'topbar' => $this->html_topbar(),
+				'sidebar' => $this->html_navigasi(),
+				'footer' => $this->html_footer(),
+				'produk' => $produk->result_array()
+				);
+			$this->load->view('produk_v', $komponen);
+		}
+		else
+		{
+			redirect('index.php/login');
+		}
+
+	}
+
+	public function do_add_produk()
+	{
+		$dat = array(
+			'kd_produk' => $this->input->post('txtkdproduk'),
+			'kd_gudang' => $this->input->post('cbogudang'),
+			'kd_kategori' => $this->input->post('cbokategori'),
+			'nama_produk' => $this->input->post('txtproduk'),
+			'ket_produk' => $this->input->post('txtket')
+			);
+		$this->inventory_model->add_produk($dat);
+		redirect('index.php/inventory/view_produk');	
+	}
+
 	public function html_topbar()
 	{
 		$session_data = $this->session->userdata('logged_in');
 		$data = array(
 			'id' => $session_data['id'],
 			'username' => $session_data['username'],
+			'jabatan' => $session_data['jabatan'],
+			'tgl' => $session_data['tgl']
 		);
 		return $this->load->view('header_v', $data, true);
 	}
 
 	public function html_navigasi()
 	{
-		$data = array(//data
-			);
+		$session_data = $this->session->userdata('logged_in');
+		$data = array(
+			'id' => $session_data['id'],
+			'username' => $session_data['username'],
+			'jabatan' => $session_data['jabatan'],
+			'tgl' => $session_data['tgl']
+		);
 		return $this->load->view('sidebar_v', $data, true);
 	}
 

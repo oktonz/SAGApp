@@ -7,7 +7,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>SAG | WAREHOUSE</title>
+    <title>SAG | PRODUCT</title>
     <!-- Tell the browser to be responsive to screen width -->
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
     <!-- Bootstrap 3.3.5 -->
@@ -57,7 +57,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
           <ol class="breadcrumb">
             <li><a href="#"><i class="fa fa-dashboard"></i>SAG</a></li>
             <li>Inventory Control</li>
-            <li class="active">WAREHOUSE</li>
+            <li class="active">Product</li>
           </ol>
         </section>
 
@@ -73,24 +73,30 @@ scratch. This page gets rid of all links and provides the needed markup only.
                   <thead>
                     <tr>
                       <th>Warehouse Id</th>
-                      <th>Warehouse</th>
+                      <th>Category Id</th>
+                      <th>Product Id</th>
+                      <th>Product Name</th>
                       <th>Description</th>
                     </tr>
                   </thead>
                   <tbody>
-                    <?php foreach ($gudang as $g) { ?>
+                    <?php foreach ($produk as $pro) { ?>
                     <tr>
-                      <td><?php echo $g['kd_gudang'];?></td>
-                      <td><?php echo $g['nama_gudang'];?></td>
-                      <td><?php echo $g['ket_gudang'];?></td>
+                      <td><?php echo $pro['kd_gudang'];?></td>
+                      <td><?php echo $pro['kd_kategori'];?></td>
+                      <td><?php echo $pro['kd_produk'];?></td>
+                      <td><?php echo $pro['nama_produk'];?></td>
+                      <td><?php echo $pro['ket_produk'];?></td>
                     </tr>
                     <?php } ?>
                   </tbody>
                   <tfoot>
                     <tr>
-                      <th>Warehouse id</th>
-                      <th>Warehouse</th>
-                      <th>Description</th>                 
+                      <th>Warehouse Id</th>
+                      <th>Category Id</th>
+                      <th>Product Id</th>
+                      <th>Product Name</th>
+                      <th>Description</th>                
                     </tr>
                   </tfoot>
                 </table>

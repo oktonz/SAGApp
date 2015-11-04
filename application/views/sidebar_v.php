@@ -6,10 +6,10 @@
     <!-- Sidebar user panel (optional) -->
     <div class="user-panel">
       <div class="pull-left image">
-        <img src="<?php echo base_url().'assets/dist/img/';?>user2-160x160.jpg" class="img-circle" alt="User Image">
+        <img src="<?php echo base_url().'assets/dist/img/';?>avatar04.png" class="img-circle" alt="User Image">
       </div>
       <div class="pull-left info">
-        <p>Edi SA</p>
+        <p><?php echo $username;?></p>
         <!-- Status -->
         <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
       </div>
@@ -38,7 +38,7 @@
         </a>
         <ul class="treeview-menu">
           <li>
-            <a href="#"><i class="fa fa-caret-right fa-fw"></i>Warehouse <i class="fa fa-angle-left pull-right"></i></a>
+            <a href="#"><i class="fa fa-caret-right fa-fw"></i>Warehouse ID<i class="fa fa-angle-left pull-right"></i></a>
               <ul class="treeview-menu">
                 <li><a href="<?php echo base_url().'index.php/inventory/add_gudang';?>"><i class="fa fa-caret-right fa-fw"> Add Warehouse</i></a></li>
                 <li><a href="<?php echo base_url().'index.php/inventory/view_gudang';?>"><i class="fa fa-caret-right fa-fw"> View Warehouse</i></a></li>
@@ -51,7 +51,13 @@
               <li><a href="<?php echo base_url().'index.php/inventory/view_kategori';?>"><i class="fa fa-caret-right fa-fw"> View Category</i></a></li>
             </ul>
           </li>
-          <li><a href="#"><i class="fa fa-caret-right fa-fw"></i>Add New Product</a></li>
+          <li>
+            <a href="#"><i class="fa fa-caret-right fa-fw"></i>Product <i class="fa fa-angle-left pull-right"></i></a>
+            <ul class="treeview-menu">
+              <li><a href="<?php echo base_url().'index.php/inventory/add_produk';?>"><i class="fa fa-caret-right fa-fw"> Add Product</i></a></li>
+              <li><a href="<?php echo base_url().'index.php/inventory/view_produk';?>"><i class="fa fa-caret-right fa-fw"> View Product</i></a></li>
+            </ul>
+          </li>
           <li><a href="#"><i class="fa fa-caret-right fa-fw"></i>Product Receipt</a></li>
           <li><a href="#"><i class="fa fa-caret-right fa-fw"></i>Product Delivery</a></li>
           <li><a href="#"><i class="fa fa-caret-right fa-fw"></i>Stock Card</a></li>

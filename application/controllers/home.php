@@ -26,14 +26,21 @@ class Home extends CI_Controller {
 		$data = array(
 			'id' => $session_data['id'],
 			'username' => $session_data['username'],
+			'jabatan' => $session_data['jabatan'],
+			'tgl' => $session_data['tgl']
 		);
 		return $this->load->view('header_v', $data, true);
 	}
 
 	public function html_navigasi()
 	{
-		$data = array(//data
-			);
+		$session_data = $this->session->userdata('logged_in');
+		$data = array(
+			'id' => $session_data['id'],
+			'username' => $session_data['username'],
+			'jabatan' => $session_data['jabatan'],
+			'tgl' => $session_data['tgl']
+		);
 		return $this->load->view('sidebar_v', $data, true);
 	}
 

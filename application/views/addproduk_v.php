@@ -7,7 +7,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>SAG | WAREHOUSE</title>
+    <title>SAG | ADD PRODUCT</title>
     <!-- Tell the browser to be responsive to screen width -->
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
     <!-- Bootstrap 3.3.5 -->
@@ -57,7 +57,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
           <ol class="breadcrumb">
             <li><a href="#"><i class="fa fa-dashboard"></i>SAG</a></li>
             <li>Inventory Control</li>
-            <li class="active">WAREHOUSE</li>
+            <li class="active">Add Product</li>
           </ol>
         </section>
 
@@ -66,34 +66,58 @@ scratch. This page gets rid of all links and provides the needed markup only.
           <!-- Your Page Content Here -->
           <div class="box box-info">
                 <div class="box-header with-border">
-                  <h3 class="box-title">Warehouse</h3>
+                  <h3 class="box-title">Add Product</h3>
                 </div><!-- /.box-header -->
                 <!-- form start -->
-                <table id="example2" class="table table-bordered table-hover">
-                  <thead>
-                    <tr>
-                      <th>Warehouse Id</th>
-                      <th>Warehouse</th>
-                      <th>Description</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <?php foreach ($gudang as $g) { ?>
-                    <tr>
-                      <td><?php echo $g['kd_gudang'];?></td>
-                      <td><?php echo $g['nama_gudang'];?></td>
-                      <td><?php echo $g['ket_gudang'];?></td>
-                    </tr>
-                    <?php } ?>
-                  </tbody>
-                  <tfoot>
-                    <tr>
-                      <th>Warehouse id</th>
-                      <th>Warehouse</th>
-                      <th>Description</th>                 
-                    </tr>
-                  </tfoot>
-                </table>
+                <form class="form-horizontal" method="post" action="<?php echo base_url().'index.php/inventory/do_add_produk';?>">
+                  <div class="box-body">
+                    <div class="form-group">
+                      <label for="kd_gudang" class="col-sm-2 control-label">Warehouse ID</label>
+                      <div class="col-sm-3">
+                        <select class="form-control" id="sel1" onchange="run1()" autofocus>
+                          <option value="No index">Kode Gudang</option>
+                          <?php foreach ($gudang as $g) { ?>
+                          <option value="<?php echo $g['kd_gudang'];?>"><?php echo $g['kd_gudang'];?></option>
+                          <?php } ?>
+                        </select>
+                        <input type="hidden" name="cbogudang" id="hgudang">
+                      </div>
+                    </div>
+                    <div class="form-group">
+                      <label for="kd_gudang" class="col-sm-2 control-label">Category ID</label>
+                      <div class="col-sm-3">
+                        <select class="form-control" id="sel2" onchange="run2()">
+                          <option value="No index">Kode Kategori</option>
+                          <?php foreach ($kategori as $kat) { ?>
+                          <option value="<?php echo $kat['kd_kategori'];?>"><?php echo $kat['kd_kategori'];?></option>
+                          <?php } ?>
+                        </select>
+                        <input type="hidden" name="cbokategori" id="hkategori">
+                      </div>
+                    </div>
+                    <div class="form-group">
+                      <label for="kd_gudang" class="col-sm-2 control-label">Product ID</label>
+                      <div class="col-sm-3">
+                        <input type="text" class="form-control" name="txtkdproduk" placeholder="Kode Produk">
+                      </div>
+                    </div>
+                    <div class="form-group">
+                      <label for="nama_gudang" class="col-sm-2 control-label">Product Name</label>
+                      <div class="col-sm-6">
+                        <input type="text" class="form-control" name="txtproduk" placeholder="Nama Produk">
+                      </div>
+                    </div>
+                    <div class="form-group">
+                      <label for="keterangan" class="col-sm-2 control-label">Description</label>
+                      <div class="col-sm-4">
+                        <textarea name="txtket" class="form-control" rows="4" placeholder="Keterangan"></textarea>
+                      </div>
+                    </div>
+                  </div><!-- /.box-body -->
+                  <div class="box-footer">
+                    <button type="submit" class="btn btn-info pull-left">Save</button>
+                  </div><!-- /.box-footer -->
+                </form>
           </div>
         </section><!-- /.content -->
       </div><!-- /.content-wrapper -->
@@ -168,6 +192,16 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
     <!-- REQUIRED JS SCRIPTS -->
 
+    <script>
+      function run1()
+      {
+        document.getElementById("hgudang").value = document.getElementById("sel1").value;
+      }
+      function run2()
+      {
+        document.getElementById("hkategori").value = document.getElementById("sel2").value;
+      }
+    </script>
     <!-- jQuery 2.1.4 -->
     <script src="<?php echo base_url().'assets/plugins/jQuery/';?>jQuery-2.1.4.min.js"></script>
     <!-- Bootstrap 3.3.5 -->
@@ -176,9 +210,5 @@ scratch. This page gets rid of all links and provides the needed markup only.
     <script src="<?php echo base_url().'assets/dist/js/';?>app.min.js"></script>
     <!-- slimscroll -->
     <script src="<?php echo base_url().'assets/plugins/slimScroll/';?>jquery.slimscroll.min.js"></script>
-     <!-- DataTables -->
-    <script src="<?php echo base_url().'assets/plugins/datatables/';?>jquery.dataTables.min.js"></script>
-    <script src="<?php echo base_url().'assets/plugins/datatables/';?>dataTables.bootstrap.min.js"></script>
-    <script src="<?php echo base_url().'assets/dist/js/';?>datatabel.js"></script>
   </body>
 </html>
