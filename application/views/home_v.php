@@ -65,7 +65,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
           
           <!-- Your Page Content Here -->
           <h1 style="text-align:center;">SAG ACCOUNTING</h1>
-          <h1 style="text-align:center;">INI HALAMAN UTAMA</h1>
+          <h1 style="text-align:center;">HALAMAN UTAMA</h1>
 
         </section><!-- /.content -->
       </div><!-- /.content-wrapper -->

@@ -26,6 +26,9 @@ body {
   overflow-x: hidden;
   overflow-y: auto;
 }
+abbr {
+  border: none;
+}
 /* Layout */
 .wrapper {
   min-height: 100%;

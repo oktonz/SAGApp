@@ -33,6 +33,9 @@ scratch. This page gets rid of all links and provides the needed markup only.
         <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
         <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
+    <style type="text/css">
+      #rmvb{border: none;}
+    </style>
   </head>
   
   <body class="hold-transition skin-green fixed sidebar-mini">
@@ -75,6 +78,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                       <th>Category Id</th>
                       <th>Category</th>
                       <th>Description</th>
+                      <th width="10%">Action</th>
                     </tr>
                   </thead>
                   <tbody>
@@ -83,6 +87,11 @@ scratch. This page gets rid of all links and provides the needed markup only.
                       <td><?php echo $kat['kd_kategori'];?></td>
                       <td><?php echo $kat['nama_kategori'];?></td>
                       <td><?php echo $kat['ket_kategori'];?></td>
+                      <td>
+                        <a href="#" data-toggle="tooltip" title="View"><i class="fa fa-search-plus fa-fw"></i></a>
+                        <a href="#" data-toggle="tooltip" title="Edit"><i class="fa fa-edit fa-fw"></i></a>
+                        <a href="#" data-toggle="tooltip" title="Delete"><i class="fa fa-trash fa-fw"></i></a>
+                      </td>
                     </tr>
                     <?php } ?>
                   </tbody>
@@ -90,7 +99,8 @@ scratch. This page gets rid of all links and provides the needed markup only.
                     <tr>
                       <th>Category Id</th>
                       <th>Category</th>
-                      <th>Description</th>                
+                      <th>Description</th> 
+                      <th>Action</th>               
                     </tr>
                   </tfoot>
                 </table>
