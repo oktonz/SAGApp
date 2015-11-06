@@ -52,13 +52,19 @@
             </ul>
           </li>
           <li>
-            <a href="#"><i class="fa fa-caret-right fa-fw"></i>Product <i class="fa fa-angle-left pull-right"></i></a>
+            <a href="#"><i class="fa fa-caret-right fa-fw"></i>Product ID<i class="fa fa-angle-left pull-right"></i></a>
             <ul class="treeview-menu">
-              <li><a href="<?php echo base_url().'index.php/inventory/add_produk';?>"><i class="fa fa-caret-right fa-fw"> Add Product</i></a></li>
-              <li><a href="<?php echo base_url().'index.php/inventory/view_produk';?>"><i class="fa fa-caret-right fa-fw"> View Product</i></a></li>
+              <li><a href="<?php echo base_url().'index.php/inventory/add_produk';?>"><i class="fa fa-caret-right fa-fw"> Add Product ID</i></a></li>
+              <li><a href="<?php echo base_url().'index.php/inventory/view_produk';?>"><i class="fa fa-caret-right fa-fw"> View Product ID</i></a></li>
             </ul>
           </li>
-          <li><a href="#"><i class="fa fa-caret-right fa-fw"></i>Product Receipt</a></li>
+          <li>
+            <a href="#"><i class="fa fa-caret-right fa-fw"></i>Product Receipt<i class="fa fa-angle-left pull-right"></i></a>
+            <ul class="treeview-menu">
+              <li><a href="<?php //echo base_url().'index.php/inventory/add_produk';?>"><i class="fa fa-caret-right fa-fw"> Add Manual</i></a></li>
+              <li><a href="<?php //echo base_url().'index.php/inventory/view_produk';?>"><i class="fa fa-caret-right fa-fw"> View Product Receipt</i></a></li>
+            </ul>
+          </li>
           <li><a href="#"><i class="fa fa-caret-right fa-fw"></i>Product Delivery</a></li>
           <li><a href="#"><i class="fa fa-caret-right fa-fw"></i>Stock Card</a></li>
         </ul>
