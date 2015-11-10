@@ -89,8 +89,12 @@ scratch. This page gets rid of all links and provides the needed markup only.
                       <td><?php echo $kat['ket_kategori'];?></td>
                       <td>
                         <a href="#" data-toggle="tooltip" title="View"><i class="fa fa-search-plus fa-fw"></i></a>
-                        <a href="#" data-toggle="tooltip" title="Edit"><i class="fa fa-edit fa-fw"></i></a>
-                        <a href="#" data-toggle="tooltip" title="Delete"><i class="fa fa-trash fa-fw"></i></a>
+                        <a href="<?php echo base_url().'index.php/Inventory/edit_kategori/'.$kat['kd_kategori'];?>" data-toggle="tooltip" title="Edit">
+                          <i class="fa fa-edit fa-fw"></i>
+                        </a>
+                        <a href="<?php echo base_url().'index.php/Inventory/do_del_kategori/'.$kat['kd_kategori'];?>" data-toggle="tooltip" title="Delete">
+                          <i class="fa fa-trash fa-fw"></i>
+                        </a>
                       </td>
                     </tr>
                     <?php } ?>

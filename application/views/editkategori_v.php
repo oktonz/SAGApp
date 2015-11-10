@@ -7,7 +7,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>SAG | WAREHOUSE</title>
+    <title>SAG | EDIT CATEGORY</title>
     <!-- Tell the browser to be responsive to screen width -->
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
     <!-- Bootstrap 3.3.5 -->
@@ -33,9 +33,6 @@ scratch. This page gets rid of all links and provides the needed markup only.
         <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
         <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
-    <style type="text/css">
-      #rmvb{border: none;}
-    </style>
   </head>
   
   <body class="hold-transition skin-green fixed sidebar-mini">
@@ -60,7 +57,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
           <ol class="breadcrumb">
             <li><a href="#"><i class="fa fa-dashboard"></i>SAG</a></li>
             <li>Inventory Control</li>
-            <li class="active">WAREHOUSE</li>
+            <li class="active">Edit Category</li>
           </ol>
         </section>
 
@@ -69,45 +66,34 @@ scratch. This page gets rid of all links and provides the needed markup only.
           <!-- Your Page Content Here -->
           <div class="box box-info">
                 <div class="box-header with-border">
-                  <h3 class="box-title">Warehouse</h3>
+                  <h3 class="box-title">Edit Kategori</h3>
                 </div><!-- /.box-header -->
                 <!-- form start -->
-                <table id="example2" class="table table-bordered table-hover">
-                  <thead>
-                    <tr>
-                      <th>Warehouse Id</th>
-                      <th>Warehouse</th>
-                      <th>Description</th>
-                      <th width="10%">Action</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <?php foreach ($gudang as $g) { ?>
-                    <tr>
-                      <td><?php echo $g['kd_gudang'];?></td>
-                      <td><?php echo $g['nama_gudang'];?></td>
-                      <td><?php echo $g['ket_gudang'];?></td>
-                      <td>
-                        <a href="#" data-toggle="tooltip" title="View"><i class="fa fa-search-plus fa-fw"></i></a>
-                        <a href="<?php echo base_url().'index.php/Inventory/edit_gudang/'.$g['kd_gudang'];?>" data-toggle="tooltip" title="Edit">
-                          <i class="fa fa-edit fa-fw"></i>
-                        </a>
-                        <a href="<?php echo base_url().'index.php/Inventory/do_del_gudang/'.$g['kd_gudang'];?>" data-toggle="tooltip" title="Delete">
-                          <i class="fa fa-trash fa-fw"></i>
-                        </a>
-                      </td>
-                    </tr>
-                    <?php } ?>
-                  </tbody>
-                  <tfoot>
-                    <tr>
-                      <th>Warehouse id</th>
-                      <th>Warehouse</th>
-                      <th>Description</th> 
-                      <th>Action</th>                
-                    </tr>
-                  </tfoot>
-                </table>
+                <form class="form-horizontal" method="post" action="<?php echo base_url().'index.php/inventory/do_edit_kategori';?>">
+                  <div class="box-body">
+                    <div class="form-group">
+                      <label for="kd_gudang" class="col-sm-2 control-label">Category ID</label>
+                      <div class="col-sm-3">
+                        <input type="text" class="form-control" name="txtkdkategori" placeholder="Kode Kategori" value="<?php echo $kat->kd_kategori;?>" readonly>
+                      </div>
+                    </div>
+                    <div class="form-group">
+                      <label for="nama_gudang" class="col-sm-2 control-label">Category</label>
+                      <div class="col-sm-6">
+                        <input type="text" class="form-control" name="txtkategori" placeholder="Kategori" value="<?php echo $kat->nama_kategori;?>">
+                      </div>
+                    </div>
+                    <div class="form-group">
+                      <label for="keterangan" class="col-sm-2 control-label">Description</label>
+                      <div class="col-sm-4">
+                        <textarea name="txtket" class="form-control" rows="4" placeholder="Keterangan"><?php echo $kat->ket_kategori;?></textarea>
+                      </div>
+                    </div>
+                  </div><!-- /.box-body -->
+                  <div class="box-footer">
+                    <button type="submit" class="btn btn-info pull-left">Save</button>
+                  </div><!-- /.box-footer -->
+                </form>
           </div>
         </section><!-- /.content -->
       </div><!-- /.content-wrapper -->
@@ -190,9 +176,5 @@ scratch. This page gets rid of all links and provides the needed markup only.
     <script src="<?php echo base_url().'assets/dist/js/';?>app.min.js"></script>
     <!-- slimscroll -->
     <script src="<?php echo base_url().'assets/plugins/slimScroll/';?>jquery.slimscroll.min.js"></script>
-     <!-- DataTables -->
-    <script src="<?php echo base_url().'assets/plugins/datatables/';?>jquery.dataTables.min.js"></script>
-    <script src="<?php echo base_url().'assets/plugins/datatables/';?>dataTables.bootstrap.min.js"></script>
-    <script src="<?php echo base_url().'assets/dist/js/';?>datatabel.js"></script>
   </body>
 </html>
