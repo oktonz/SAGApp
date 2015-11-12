@@ -33,6 +33,19 @@ scratch. This page gets rid of all links and provides the needed markup only.
         <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
         <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
+    <style type="text/css">
+    section > div > h1{
+      text-align: center;
+      -webkit-text-fill-color: white;
+      font-weight: bold;
+      font-size: 40px;
+      -webkit-text-stroke-width: 2px;
+      -webkit-text-stroke-color: black;
+    }
+    #marg {
+      margin-top: 150px;
+    }
+    </style>
   </head>
   
   <body class="hold-transition skin-green fixed sidebar-mini">
@@ -64,9 +77,10 @@ scratch. This page gets rid of all links and provides the needed markup only.
         <section class="content">
           
           <!-- Your Page Content Here -->
-          <h1 style="text-align:center;">SAG ACCOUNTING</h1>
-          <h1 style="text-align:center;">HALAMAN UTAMA</h1>
-
+          <div class="box box-info" style="background-image:url(<?php echo base_url().'assets/img/bg.jpg';?>);height:475px">
+              <h1 id="marg">SAG ACCOUNTING</h1>
+              <h1>HALAMAN UTAMA</h1>          
+          </div>    
         </section><!-- /.content -->
       </div><!-- /.content-wrapper -->
 

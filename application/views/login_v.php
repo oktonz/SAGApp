@@ -37,7 +37,7 @@
         <?php echo validation_errors(); ?>
         <form action="<?php echo base_url().'index.php/verifylogin';?>" method="post">
           <div class="form-group has-feedback">
-            <input type="text" class="form-control" placeholder="Username" name="username">
+            <input type="text" class="form-control" placeholder="Username" name="username" autofocus>
             <span class="glyphicon glyphicon-user form-control-feedback"></span>
           </div>
           <div class="form-group has-feedback">

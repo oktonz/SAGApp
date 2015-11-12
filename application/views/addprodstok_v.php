@@ -7,7 +7,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>SAG | ADD WAREHOUSE</title>
+    <title>SAG | ADD PRODUCT STOCK</title>
     <!-- Tell the browser to be responsive to screen width -->
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
     <!-- Bootstrap 3.3.5 -->
@@ -51,13 +51,13 @@ scratch. This page gets rid of all links and provides the needed markup only.
         <!-- Content Header (Page header) -->
         <section class="content-header">
           <h1>
-            Add Warehouse Id
-            <small>Tambah kode guadang</small>
+            Dashboard
+            <small>Version 0.1</small>
           </h1>
           <ol class="breadcrumb">
             <li><a href="#"><i class="fa fa-dashboard"></i>SAG</a></li>
             <li>Inventory Control</li>
-            <li class="active">Add Warehouse</li>
+            <li class="active">Add Product Stock</li>
           </ol>
         </section>
 
@@ -65,26 +65,46 @@ scratch. This page gets rid of all links and provides the needed markup only.
         <section class="content">
           <!-- Your Page Content Here -->
           <div class="box box-info">
-                
+                <div class="box-header with-border">
+                  <h3 class="box-title">Add Product Stock</h3>
+                </div><!-- /.box-header -->
                 <!-- form start -->
-                <form class="form-horizontal" method="post" action="<?php echo base_url().'index.php/inventory/do_add_gudang';?>">
+                <form class="form-horizontal" method="post" action="<?php echo base_url().'index.php/inventory/do_add_produk';?>">
                   <div class="box-body">
                     <div class="form-group">
-                      <label for="kd_gudang" class="col-sm-2 control-label">Warehouse ID</label>
+                      <label for="kd_gudang" class="col-sm-2 control-label">Product ID</label>
                       <div class="col-sm-3">
-                        <input type="text" class="form-control" name="txtkdgudang" placeholder="Kode Gudang" autofocus>
+                        <select class="form-control" id="sel1" onchange="run1()" autofocus>
+                          <option value="">Kode Produk</option>
+                          <?php foreach ($gudang as $g) { ?>
+                          <option value="<?php echo $g['kd_gudang'];?>"><?php echo $g['kd_gudang'];?></option>
+                          <?php } ?>
+                        </select>
+                        <input type="hidden" name="cbogudang" id="hgudang">
                       </div>
                     </div>
                     <div class="form-group">
-                      <label for="nama_gudang" class="col-sm-2 control-label">Warehouse Name</label>
-                      <div class="col-sm-6">
-                        <input type="text" class="form-control" name="txtgudang" placeholder="Nama Gudang">
+                      <label for="kd_gudang" class="col-sm-2 control-label">Product Name</label>
+                      <div class="col-sm-3">
+                        <input type="text" class="form-control" name="txtkdproduk" placeholder="Kode Produk">
                       </div>
                     </div>
                     <div class="form-group">
-                      <label for="keterangan" class="col-sm-2 control-label">Description</label>
-                      <div class="col-sm-4">
-                        <textarea name="txtket" class="form-control" rows="4" placeholder="Keterangan"></textarea>
+                      <label for="nama_gudang" class="col-sm-2 control-label">Harga Beli</label>
+                      <div class="col-sm-2">
+                        <input type="text" class="form-control" name="txtproduk" placeholder="Nama Produk">
+                      </div>
+                    </div>
+                    <div class="form-group">
+                      <label for="nama_gudang" class="col-sm-2 control-label">Harga Jual</label>
+                      <div class="col-sm-2">
+                        <input type="text" class="form-control" name="txtproduk" placeholder="Nama Produk">
+                      </div>
+                    </div>
+                    <div class="form-group">
+                      <label for="nama_gudang" class="col-sm-2 control-label">Stock</label>
+                      <div class="col-sm-1">
+                        <input type="text" class="form-control" name="txtproduk" placeholder="Nama Produk">
                       </div>
                     </div>
                   </div><!-- /.box-body -->
@@ -166,6 +186,16 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
     <!-- REQUIRED JS SCRIPTS -->
 
+    <script>
+      function run1()
+      {
+        document.getElementById("hgudang").value = document.getElementById("sel1").value;
+      }
+      function run2()
+      {
+        document.getElementById("hkategori").value = document.getElementById("sel2").value;
+      }
+    </script>
     <!-- jQuery 2.1.4 -->
     <script src="<?php echo base_url().'assets/plugins/jQuery/';?>jQuery-2.1.4.min.js"></script>
     <!-- Bootstrap 3.3.5 -->
