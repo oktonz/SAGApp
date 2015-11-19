@@ -7,7 +7,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>SAG | ADD WAREHOUSE</title>
+    <title>SAG | ADD WAREHOUSE CODE</title>
     <!-- Tell the browser to be responsive to screen width -->
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
     <!-- Bootstrap 3.3.5 -->
@@ -51,7 +51,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
         <!-- Content Header (Page header) -->
         <section class="content-header">
           <h1>
-            Add Warehouse Id
+            Add Warehouse Code
             <small>Tambah kode guadang</small>
           </h1>
           <ol class="breadcrumb">
@@ -70,7 +70,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                 <form class="form-horizontal" method="post" action="<?php echo base_url().'index.php/inventory/do_add_gudang';?>">
                   <div class="box-body">
                     <div class="form-group">
-                      <label for="kd_gudang" class="col-sm-2 control-label">Warehouse ID</label>
+                      <label for="kd_gudang" class="col-sm-2 control-label">Warehouse Code</label>
                       <div class="col-sm-3">
                         <input type="text" class="form-control" name="txtkdgudang" placeholder="Kode Gudang" autofocus>
                       </div>

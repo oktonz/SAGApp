@@ -7,7 +7,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>SAG | ADD PRODUCT STOCK</title>
+    <title>SAG | ADD TRANSACTION</title>
     <!-- Tell the browser to be responsive to screen width -->
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
     <!-- Bootstrap 3.3.5 -->
@@ -66,52 +66,59 @@ scratch. This page gets rid of all links and provides the needed markup only.
           <!-- Your Page Content Here -->
           <div class="box box-info">
                 <div class="box-header with-border">
-                  <h3 class="box-title">Add Product Stock</h3>
+                  <h3 class="box-title">Add Transaksi</h3>
                 </div><!-- /.box-header -->
                 <!-- form start -->
                 <form class="form-horizontal" method="post" action="<?php echo base_url().'index.php/inventory/do_add_produk';?>">
                   <div class="box-body">
                     <div class="form-group">
-                      <label for="kd_gudang" class="col-sm-2 control-label">Product ID</label>
-                      <div class="col-sm-3">
-                        <select class="form-control" id="sel1" onchange="run1()" autofocus>
-                          <option value="">Kode Produk</option>
-                          <?php foreach ($gudang as $g) { ?>
-                          <option value="<?php echo $g['kd_gudang'];?>"><?php echo $g['kd_gudang'];?></option>
-                          <?php } ?>
-                        </select>
-                        <input type="hidden" name="cbogudang" id="hgudang">
+                      <label for="kd_gudang" class="col-sm-2 control-label">No Bukti</label>
+                      <div class="col-sm-4">
+                        <input type="text" class="form-control" name="txtkdproduk" value="" placeholder="Nomor Bukti">                    
                       </div>
                     </div>
                     <div class="form-group">
-                      <label for="kd_gudang" class="col-sm-2 control-label">Product Name</label>
-                      <div class="col-sm-3">
-                        <input type="text" class="form-control" name="txtkdproduk" placeholder="Kode Produk">
-                      </div>
-                    </div>
-                    <div class="form-group">
-                      <label for="nama_gudang" class="col-sm-2 control-label">Harga Beli</label>
+                      <label for="kd_gudang" class="col-sm-2 control-label">Tanggal Trans</label>
                       <div class="col-sm-2">
-                        <input type="text" class="form-control" name="txtproduk" placeholder="Nama Produk">
+                        <input type="date" class="form-control" name="txtkdproduk" value="">
                       </div>
                     </div>
                     <div class="form-group">
-                      <label for="nama_gudang" class="col-sm-2 control-label">Harga Jual</label>
-                      <div class="col-sm-2">
-                        <input type="text" class="form-control" name="txtproduk" placeholder="Nama Produk">
+                      <label for="nama_gudang" class="col-sm-2 control-label">Keterangan</label>
+                      <div class="col-sm-3">
+                        <textarea class="form-control" name="txtket" placeholder="Keterangan"></textarea>
                       </div>
-                    </div>
-                    <div class="form-group">
-                      <label for="nama_gudang" class="col-sm-2 control-label">Stock</label>
-                      <div class="col-sm-1">
-                        <input type="text" class="form-control" name="txtproduk" placeholder="Nama Produk">
-                      </div>
-                    </div>
-                  </div><!-- /.box-body -->
+                    </div>                    
+                  </div><!-- /.box-body -->                  
+                  <table id="example2" class="table table-bordered table-hover">                                       
+                  <thead>
+                    <tr>
+                      <th>Kode Barang</th>
+                      <th>Nama Barang</th>
+                      <th>Satuan</th>
+                      <th>Quantity</th>
+                      <th>Harga</th>
+                      <th>Jumlah</th>                      
+                    </tr>
+                  </thead>
+                  <tbody>            
+                    <tr>
+                      <form action="index.php" name="students" method="post" id="students">
+                        <td><input type="text" name="countryname[]" id="countryname_1" class="ui-autocomplete-input"></td>
+                        <td><input type="text" name="country_no[]" id="country_no_1" class="ui-autocomplete-input"></td>
+                        <td><input type="text" name="phone_code[]" id="phone_code_1" class="ui-autocomplete-input"></td>
+                        <td><input type="text" name="country_code[]" id="country_code_1" class="ui-autocomplete-input"></td>
+                        <td><input type="text" name="country_code[]" id="country_code_1" class="ui-autocomplete-input"></td>
+                        <td><input type="text" name="country_code[]" id="country_code_1" class="ui-autocomplete-input"></td>
+                      </form>                                                                
+                    </tr>                   
+                  </tbody>                  
+                </table>
                   <div class="box-footer">
                     <button type="submit" class="btn btn-info pull-left">Save</button>
                   </div><!-- /.box-footer -->
-                </form>
+                </form>            
+                
           </div>
         </section><!-- /.content -->
       </div><!-- /.content-wrapper -->
@@ -204,5 +211,9 @@ scratch. This page gets rid of all links and provides the needed markup only.
     <script src="<?php echo base_url().'assets/dist/js/';?>app.min.js"></script>
     <!-- slimscroll -->
     <script src="<?php echo base_url().'assets/plugins/slimScroll/';?>jquery.slimscroll.min.js"></script>
+    <!-- DataTables -->
+    <script src="<?php echo base_url().'assets/plugins/datatables/';?>jquery.dataTables.min.js"></script>
+    <script src="<?php echo base_url().'assets/plugins/datatables/';?>dataTables.bootstrap.min.js"></script>
+    <script src="<?php echo base_url().'assets/dist/js/';?>datatabel.js"></script>
   </body>
 </html>
