@@ -12,6 +12,8 @@ scratch. This page gets rid of all links and provides the needed markup only.
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
     <!-- Bootstrap 3.3.5 -->
     <link rel="stylesheet" href="<?php echo base_url().'assets/bootstrap/css/';?>bootstrap.min.css">
+    <!-- MAIN -->
+    <link rel="stylesheet" type="text/css" href="<?php echo base_url().'assets/dist/css/';?>jquery-ui.min.css">
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
     <!-- Ionicons -->
@@ -69,18 +71,18 @@ scratch. This page gets rid of all links and provides the needed markup only.
                   <h3 class="box-title">Add Transaksi</h3>
                 </div><!-- /.box-header -->
                 <!-- form start -->
-                <form class="form-horizontal" method="post" action="<?php echo base_url().'index.php/inventory/do_add_produk';?>">
+                <form class="form-horizontal" method="post" action="<?php echo base_url().'index.php/inventory/do_add_trans';?>">
                   <div class="box-body">
                     <div class="form-group">
                       <label for="kd_gudang" class="col-sm-2 control-label">No Bukti</label>
                       <div class="col-sm-4">
-                        <input type="text" class="form-control" name="txtkdproduk" value="" placeholder="Nomor Bukti">                    
+                        <input type="text" class="form-control" name="txtnobukti" value="" placeholder="Nomor Bukti" autofocus>                    
                       </div>
                     </div>
                     <div class="form-group">
                       <label for="kd_gudang" class="col-sm-2 control-label">Tanggal Trans</label>
                       <div class="col-sm-2">
-                        <input type="date" class="form-control" name="txtkdproduk" value="">
+                        <input type="date" class="form-control" name="txttgl" value="">
                       </div>
                     </div>
                     <div class="form-group">
@@ -90,9 +92,10 @@ scratch. This page gets rid of all links and provides the needed markup only.
                       </div>
                     </div>                    
                   </div><!-- /.box-body -->                  
-                  <table id="example2" class="table table-bordered table-hover">                                       
+                  <table id="" class="table table-bordered table-hover">                                       
                   <thead>
                     <tr>
+                      <th><input type="checkbox" class="check_all" onclick="select_all()"></th>
                       <th>Kode Barang</th>
                       <th>Nama Barang</th>
                       <th>Satuan</th>
@@ -103,17 +106,20 @@ scratch. This page gets rid of all links and provides the needed markup only.
                   </thead>
                   <tbody>            
                     <tr>
-                      <form action="index.php" name="students" method="post" id="students">
-                        <td><input type="text" name="countryname[]" id="countryname_1" class="ui-autocomplete-input"></td>
-                        <td><input type="text" name="country_no[]" id="country_no_1" class="ui-autocomplete-input"></td>
-                        <td><input type="text" name="phone_code[]" id="phone_code_1" class="ui-autocomplete-input"></td>
-                        <td><input type="text" name="country_code[]" id="country_code_1" class="ui-autocomplete-input"></td>
-                        <td><input type="text" name="country_code[]" id="country_code_1" class="ui-autocomplete-input"></td>
-                        <td><input type="text" name="country_code[]" id="country_code_1" class="ui-autocomplete-input"></td>
-                      </form>                                                                
+                      <td><input type="checkbox" class="case"></td>
+                      <td><input type="text" class="form-control" id='txtkdbarang_1' name='txtkdbarang[]' readonly/></td>
+                      <td><input type="text" class="form-control" id='txtnmbarang_1' name='txtnmbarang[]'></td>
+                      <td><input type="text" class="form-control" id='txtsatuan_1' name='txtsatuan[]'></td>
+                      <td><input type="text" class="form-control" id='txtqty_1' name='txtqty[]'></td>
+                      <td><input type="text" class="form-control" id='txtharga_1' name='txtharga[]'></td>
+                      <td><input type="text" class="form-control" id='txtjumlah_1' name='txtjumlah[]'></td>
                     </tr>                   
                   </tbody>                  
                 </table>
+                <div class="box-footer">
+                  <a href="#" class="btn btn-primary addmore">+ Tambah</a>
+                  <a href="#" class="btn btn-danger delete">- Hapus</a>                  
+                </div>
                   <div class="box-footer">
                     <button type="submit" class="btn btn-info pull-left">Save</button>
                   </div><!-- /.box-footer -->
@@ -191,20 +197,16 @@ scratch. This page gets rid of all links and provides the needed markup only.
       <div class="control-sidebar-bg"></div>
     </div><!-- ./wrapper -->
 
+    <script type="text/javascript">
+      var BASE_URL = "<?php echo base_url();?>"
+    </script>
+
     <!-- REQUIRED JS SCRIPTS -->
 
-    <script>
-      function run1()
-      {
-        document.getElementById("hgudang").value = document.getElementById("sel1").value;
-      }
-      function run2()
-      {
-        document.getElementById("hkategori").value = document.getElementById("sel2").value;
-      }
-    </script>
     <!-- jQuery 2.1.4 -->
     <script src="<?php echo base_url().'assets/plugins/jQuery/';?>jQuery-2.1.4.min.js"></script>
+    <!-- jQuery UI -->
+    <script src="<?php echo base_url().'assets/plugins/jQueryUI/';?>jQuery-ui.min.js"></script>
     <!-- Bootstrap 3.3.5 -->
     <script src="<?php echo base_url().'assets/bootstrap/js/';?>bootstrap.min.js"></script>
     <!-- AdminLTE App -->
@@ -215,5 +217,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
     <script src="<?php echo base_url().'assets/plugins/datatables/';?>jquery.dataTables.min.js"></script>
     <script src="<?php echo base_url().'assets/plugins/datatables/';?>dataTables.bootstrap.min.js"></script>
     <script src="<?php echo base_url().'assets/dist/js/';?>datatabel.js"></script>
+    <!-- Autocomplete-->
+    <script src="<?php echo base_url().'assets/dist/js/';?>auto.js"></script>    
   </body>
 </html>
