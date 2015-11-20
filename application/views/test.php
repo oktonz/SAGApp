@@ -1,15 +1,42 @@
 <?php 
-print_r($nama_produk);
-echo('<br>');
-print_r($kd_produk);
-echo('<br>');
-print_r($satuan);
-echo('<br>');
-print_r($qty);
-echo('<br>');
-print_r($harga);
-echo('<br>');
-print_r($jumlah);
-echo('<br>');
-echo implode(',', $nama_produk);
+//echo implode(',', $nama_produk)."<br>";
+//echo implode(',', $kd_produk)."<br>";
+//echo implode(',', $satuan)."<br>";
+//echo implode(',', $qty)."<br>";
+//echo implode(',', $harga)."<br>";
+//echo implode(',', $jumlah)."<br>";
 ?>
+<html>
+	<head>
+		<title></title>
+	</head>
+	<body>
+		<!--
+		<table border="1px solid">
+			<tr>
+				<th>Kode Produk</th>
+				<th>Nama Produk</th>
+				<th>Satuan</th>
+				<th>Quantity</th>
+				<th>Harga</th>
+				<th>Jumlah</th>
+			</tr>
+			<?php foreach ($produk as $i) { ?>
+			<tr>
+				<td><?php echo $i;?></td>
+				<td><?php echo $i;?></td>
+				<td><?php echo $i;?></td>
+				<td><?php echo $i;?></td>
+				<td><?php echo $i;?></td>
+				<td><?php echo $i;?></td>
+			</tr>
+			<?php } ?>
+		</table>
+	-->
+	<?php 
+	echo "<pre>";
+	print_r($produk);
+	echo "</pre>";
+	?>
+	</body>
+</html>

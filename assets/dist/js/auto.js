@@ -67,7 +67,7 @@ $(".addmore").on('click',function(){
   			method: 'post',
 			data: {
 			   name_startsWith: request.term,
-			   type: 'produk_table',
+			   type: 'txtkdbarang',
 			   row_num : row
 			},
 			 success: function( data ) {
@@ -104,7 +104,7 @@ $(".addmore").on('click',function(){
   			method: 'post',
 			data: {
 			   name_startsWith: request.term,
-			   type: 'produk_table',
+			   type: 'txtsatuan',
 			   row_num : row
 			},
 			 success: function( data ) {
@@ -141,7 +141,7 @@ $(".addmore").on('click',function(){
   			method: 'post',
 			data: {
 			   name_startsWith: request.term,
-			   type: 'produk_table',
+			   type: 'txtqty',
 			   row_num : row
 			},
 			 success: function( data ) {
@@ -178,7 +178,7 @@ $(".addmore").on('click',function(){
   			method: 'post',
 			data: {
 			   name_startsWith: request.term,
-			   type: 'produk_table',
+			   type: 'txtharga',
 			   row_num : row
 			},
 			 success: function( data ) {
@@ -215,7 +215,7 @@ $(".addmore").on('click',function(){
   			method: 'post',
 			data: {
 			   name_startsWith: request.term,
-			   type: 'produk_table',
+			   type: 'txtjumlah',
 			   row_num : row
 			},
 			 success: function( data ) {

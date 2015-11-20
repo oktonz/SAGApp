@@ -296,13 +296,16 @@ class Inventory extends CI_Controller {
 	public function do_add_trans()
 	{
 		
-		$dat = array(
+		$items = array(
 			'nama_produk' => $this->input->post('txtnmbarang'),
 			'kd_produk' => $this->input->post('txtkdbarang'),
 			'satuan' => $this->input->post('txtsatuan'),
 			'qty' => $this->input->post('txtqty'),
 			'harga' => $this->input->post('txtharga'),
 			'jumlah' => $this->input->post('txtjumlah')
+			);
+		$dat = array(
+			'produk' => $items,
 			);
 		$this->load->view('test', $dat);
 	}
