@@ -14,12 +14,12 @@ $(".addmore").on('click',function(){
 	count=$('table tr').length;
 	
     var data="<tr><td><input type='checkbox' class='case'/></td>";
-    data +="<td><input class='form-control' type='text' id='txtkdbarang_"+i+"' name='txtkdbarang[]' readonly='readonly'/></td>"+
-    		"<td><input class='form-control' type='text' id='txtnmbarang_"+i+"' name='txtnmbarang[]' autofocus/></td>"+
+    data +="<td><input class='form-control' type='text' id='txtkdbarang_"+i+"' name='txtkdbarang[]'/></td>"+
+    		"<td><input class='form-control' type='text' id='txtnmbarang_"+i+"' name='txtnmbarang[]'/></td>"+
     		"<td><input class='form-control' type='text' id='txtsatuan_"+i+"' name='txtsatuan[]'/></td>"+
     		"<td><input class='form-control' type='text' id='txtqty_"+i+"' name='txtqty[]'/></td>"+
-    		"<td><input class='form-control' type='text' id='txtharga_"+i+"' name='txtharga[]'/></td>"+
-    		"<td><input class='form-control' type='text' id='txtjumlah_"+i+"' name='txtjumlah[]'/></td></tr>";
+    		"<td><input class='form-control' type='text' id='txtharga_"+i+"' name='txtharga[]' onchange='hitjumlah()'/></td>"+
+    		"<td><input class='form-control' type='text' id='txtjumlah_"+i+"' name='txtjumlah[]' readonly/></td></tr>";
 	$('table').append(data);
 	row = i ;
 	$('#txtnmbarang_'+i).autocomplete({
@@ -67,7 +67,7 @@ $(".addmore").on('click',function(){
   			method: 'post',
 			data: {
 			   name_startsWith: request.term,
-			   type: 'txtkdbarang',
+			   type: 'kode_table',
 			   row_num : row
 			},
 			 success: function( data ) {
@@ -308,7 +308,7 @@ $('#txtkdbarang_1').autocomplete({
   			method: 'post',
 			data: {
 			   name_startsWith: request.term,
-			   type: 'txtkdbarang',
+			   type: 'kode_table',
 			   row_num : 1
 			},
 			 success: function( data ) {

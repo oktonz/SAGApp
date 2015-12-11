@@ -34,6 +34,17 @@
 		</table>
 	-->
 	<?php 
+	/*
+	for ($i=0; $i <= count($this->input->post('txtnmbarang')) ; $i++) { 
+		$barang[$i] = array(
+			'nama_produk' => $produk['namabarang'][$i],
+			'satuan' => $produk['satuan'][$i],
+			'qty' => $produk['qty'][$i],
+			'harga' => $produk['harga'][$i],
+			'jumlah' => $produk['jlh'][$i]
+			);
+	}
+	echo $test;*/
 	echo "<pre>";
 	print_r($produk);
 	echo "</pre>";

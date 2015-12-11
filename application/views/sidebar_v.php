@@ -61,11 +61,17 @@
           <li>
             <a href="#"><i class="fa fa-caret-right fa-fw"></i>Product Receipt<i class="fa fa-angle-left pull-right"></i></a>
             <ul class="treeview-menu">
-              <li><a href="<?php echo base_url().'index.php/inventory/add_prod_stok';?>"><i class="fa fa-caret-right fa-fw"> Add Transaction</i></a></li>
-              <li><a href="<?php //echo base_url().'index.php/inventory/view_produk';?>"><i class="fa fa-caret-right fa-fw"> View Product Receipt</i></a></li>
+              <li><a href="<?php echo base_url().'index.php/inventory/add_trans_msk';?>"><i class="fa fa-caret-right fa-fw"> Add Transaction</i></a></li>
+              <li><a href="<?php echo base_url().'index.php/inventory/view_trans_receipt';?>"><i class="fa fa-caret-right fa-fw"> View Product Receipt</i></a></li>
             </ul>
           </li>
-          <li><a href="#"><i class="fa fa-caret-right fa-fw"></i>Product Delivery</a></li>
+          <li>
+            <a href="#"><i class="fa fa-caret-right fa-fw"></i>Product Delivery<i class="fa fa-angle-left pull-right"></i></a>
+            <ul class="treeview-menu">
+              <li><a href="<?php echo base_url().'index.php/inventory/add_trans_klr';?>"><i class="fa fa-caret-right fa-fw"> Add Transaction</i></a></li>
+              <li><a href="<?php echo base_url().'index.php/inventory/view_trans_delivery';?>"><i class="fa fa-caret-right fa-fw"> View Product Delivery</i></a></li>
+            </ul>
+          </li>
           <li><a href="#"><i class="fa fa-caret-right fa-fw"></i>Stock Card</a></li>
         </ul>
       </li>

@@ -74,21 +74,32 @@ scratch. This page gets rid of all links and provides the needed markup only.
                 <form class="form-horizontal" method="post" action="<?php echo base_url().'index.php/inventory/do_add_trans';?>">
                   <div class="box-body">
                     <div class="form-group">
-                      <label for="kd_gudang" class="col-sm-2 control-label">No Bukti</label>
-                      <div class="col-sm-4">
-                        <input type="text" class="form-control" name="txtnobukti" value="" placeholder="Nomor Bukti" autofocus>                    
+                      <label for="kd_gudang" class="col-sm-2 control-label">Kategori</label>
+                      <div class="col-sm-2">
+                        <select class="form-control" id="kat" onchange="run()" required>
+                          <option value="kategori">Pilih Kategori</option>
+                          <option value="kategori 1">Kategori 1</option>
+                          <option value="kategori 2">Kategori 2</option>
+                        </select>
+                        <input type="hidden" name="cbokat" id="hkat">
                       </div>
                     </div>
                     <div class="form-group">
-                      <label for="kd_gudang" class="col-sm-2 control-label">Tanggal Trans</label>
+                      <label for="kd_gudang" class="col-sm-2 control-label">No Bukti</label>
+                      <div class="col-sm-4">
+                        <input type="text" class="form-control" name="txtnobukti" value="" placeholder="Nomor Bukti" required>                    
+                      </div>
+                    </div>
+                    <div class="form-group">
+                      <label for="kd_gudang" class="col-sm-2 control-label">Tanggal</label>
                       <div class="col-sm-2">
-                        <input type="date" class="form-control" name="txttgl" value="">
+                        <input type="date" class="form-control" name="txttgl" value="" required>
                       </div>
                     </div>
                     <div class="form-group">
                       <label for="nama_gudang" class="col-sm-2 control-label">Keterangan</label>
                       <div class="col-sm-3">
-                        <textarea class="form-control" name="txtket" placeholder="Keterangan"></textarea>
+                        <textarea class="form-control" name="txtket" placeholder="Keterangan" required></textarea>
                       </div>
                     </div>                    
                   </div><!-- /.box-body -->                  
@@ -96,8 +107,8 @@ scratch. This page gets rid of all links and provides the needed markup only.
                   <thead>
                     <tr>
                       <th><input type="checkbox" class="check_all" onclick="select_all()"></th>
-                      <th>Kode Barang</th>
-                      <th>Nama Barang</th>
+                      <th>Kode Produk</th>
+                      <th>Nama Produk</th>
                       <th>Satuan</th>
                       <th>Quantity</th>
                       <th>Harga</th>
@@ -107,18 +118,22 @@ scratch. This page gets rid of all links and provides the needed markup only.
                   <tbody>            
                     <tr>
                       <td><input type="checkbox" class="case"></td>
-                      <td><input type="text" class="form-control" id='txtkdbarang_1' name='txtkdbarang[]' readonly/></td>
+                      <td><input type="text" class="form-control" id='txtkdbarang_1' name='txtkdbarang[]'/></td>
                       <td><input type="text" class="form-control" id='txtnmbarang_1' name='txtnmbarang[]'></td>
                       <td><input type="text" class="form-control" id='txtsatuan_1' name='txtsatuan[]'></td>
-                      <td><input type="text" class="form-control" id='txtqty_1' name='txtqty[]'></td>
-                      <td><input type="text" class="form-control" id='txtharga_1' name='txtharga[]'></td>
-                      <td><input type="text" class="form-control" id='txtjumlah_1' name='txtjumlah[]'></td>
+                      <td><input type="text" class="form-control" id='txtqty_1' name='txtqty[]'></td> 
+                      <td><input type="text" class="form-control" id='txtharga_1' name='txtharga[]' onchange="hitjumlah()"></td>
+                      <td><input type="text" class="form-control" id='txtjumlah_1' name='txtjumlah[]' readonly ></td>
                     </tr>                   
                   </tbody>                  
                 </table>
                 <div class="box-footer">
                   <a href="#" class="btn btn-primary addmore">+ Tambah</a>
                   <a href="#" class="btn btn-danger delete">- Hapus</a>                  
+                  <div class="col-sm-3 pull-right">
+                      <input type="text" class="form-control" name="txttot" id="total" readonly>
+                  </div>
+                  <label class="col-sm-2 control-label pull-right">TOTAL : </label>                                    
                 </div>
                   <div class="box-footer">
                     <button type="submit" class="btn btn-info pull-left">Save</button>
@@ -185,7 +200,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                   <input type="checkbox" class="pull-right" checked>
                 </label>
                 <p>
-                  Some information about this general settings option
+                  Some information about this general settings option 
                 </p>
               </div><!-- /.form-group -->
             </form>
@@ -198,7 +213,33 @@ scratch. This page gets rid of all links and provides the needed markup only.
     </div><!-- ./wrapper -->
 
     <script type="text/javascript">
-      var BASE_URL = "<?php echo base_url();?>"
+      var BASE_URL = "<?php echo base_url();?>";
+    </script>
+
+    <script type="text/javascript">
+         
+      function hitjumlah(){
+        var countings = document.getElementsByName('txtjumlah[]').length;
+        for (var i = 1; i <= countings; i++) {
+          var qty = document.getElementById('txtqty_'+i).value;
+          var harga = document.getElementById('txtharga_'+i).value;
+          var has = qty * harga;
+          document.getElementById('txtjumlah_'+i).value = has; 
+        };
+
+        var arr = document.getElementsByName('txtjumlah[]');
+        var tot=0;
+        for(var i=0;i<arr.length;i++){
+            if(parseInt(arr[i].value))
+                tot += parseInt(arr[i].value);
+        }
+        document.getElementById('total').value = tot;
+      }
+
+      function run()
+      {
+        document.getElementById("hkat").value = document.getElementById("kat").value;
+      }
     </script>
 
     <!-- REQUIRED JS SCRIPTS -->
