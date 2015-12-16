@@ -51,7 +51,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
         <!-- Content Header (Page header) -->
         <section class="content-header">
           <h1>
-            Dashboard
+            Inventory Control
             <small>Version 0.1</small>
           </h1>
           <ol class="breadcrumb">

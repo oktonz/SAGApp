@@ -51,8 +51,8 @@ scratch. This page gets rid of all links and provides the needed markup only.
         <!-- Content Header (Page header) -->
         <section class="content-header">
           <h1>
-            Add Warehouse Code
-            <small>Tambah kode guadang</small>
+            Inventory Control
+            <small>Version 0.1</small>
           </h1>
           <ol class="breadcrumb">
             <li><a href="#"><i class="fa fa-dashboard"></i>SAG</a></li>
@@ -65,7 +65,9 @@ scratch. This page gets rid of all links and provides the needed markup only.
         <section class="content">
           <!-- Your Page Content Here -->
           <div class="box box-info">
-                
+                <div class="box-header with-border">
+                  <h3 class="box-title">Add Gudang</h3>
+                </div><!-- /.box-header -->
                 <!-- form start -->
                 <form class="form-horizontal" method="post" action="<?php echo base_url().'index.php/inventory/do_add_gudang';?>">
                   <div class="box-body">
