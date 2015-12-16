@@ -121,15 +121,17 @@ scratch. This page gets rid of all links and provides the needed markup only.
                       <td><input type="text" class="form-control" id='txtnmbarang_1' name='txtnmbarang[]'></td>
                       <td><input type="text" class="form-control" id='txtsatuan_1' name='txtsatuan[]'></td>
                       <td><input type="text" class="form-control" id='txtqty_1' name='txtqty[]'></td>
-                      <td><input type="text" class="form-control" id='txtharga_1' name='txtharga[]'></td>
-                      <td><input type="text" class="form-control" id='txtjumlah_1' name='txtjumlah[]' onchange="findTotal()"></td>
+                      <td><input type="text" class="form-control" id='txtharga_1' name='txtharga[]' onchange="hitjumlah()"></td>
+                      <td><input type="text" class="form-control" id='txtjumlah_1' name='txtjumlah[]'></td>
                     </tr>                   
                   </tbody>                  
                 </table>
                 <div class="box-footer">
                   <a href="#" class="btn btn-primary addmore">+ Tambah</a>
                   <a href="#" class="btn btn-danger delete">- Hapus</a>
-                  <label class="col-sm-2 control-label pull-right" id="total">Null</label> 
+                  <div class="col-sm-3 pull-right">
+                      <input type="text" class="form-control" name="txttot" id="total" readonly>
+                  </div> 
                   <label class="col-sm-1 control-label pull-right">TOTAL : </label>                  
                 </div>
                   <div class="box-footer">
@@ -214,16 +216,28 @@ scratch. This page gets rid of all links and provides the needed markup only.
     </script>
 
     <script type="text/javascript">
-      function findTotal(){
-      var arr = document.getElementsByName('txtjumlah[]');
-      var tot=0;
-      for(var i=0;i<arr.length;i++){
-          if(parseInt(arr[i].value))
+      function hitjumlah(){
+        var countings = document.getElementsByName('txtjumlah[]').length;
+        for (var i = 1; i <= countings; i++) {
+          var qty = document.getElementById('txtqty_'+i).value;
+          var harga = document.getElementById('txtharga_'+i).value;
+          var has = qty * harga;
+          document.getElementById('txtjumlah_'+i).value = has; 
+        };
+
+        var arr = document.getElementsByName('txtjumlah[]');
+        var tot=0;
+        for(var i=0;i<arr.length;i++){
+            if(parseInt(arr[i].value))
               tot += parseInt(arr[i].value);
+        }
+        document.getElementById('total').value = tot;
       }
-      //document.getElementById('total').value = tot;
-      $('#total').text(tot);
-    }     
+
+      function run()
+      {
+        document.getElementById("hkat").value = document.getElementById("kat").value;
+      }
     </script>
 
     <!-- REQUIRED JS SCRIPTS -->

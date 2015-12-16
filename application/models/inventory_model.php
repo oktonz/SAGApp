@@ -13,6 +13,26 @@ Class Inventory_model extends CI_Model
 		return $data;
 	}
 
+	function delete_gudang($data)
+	{
+		$this->db->where('kd_gudang', $data);
+		$query = $this->db->delete('tbl_ingudang');
+		return $query;
+	}
+
+	function get_det_gudang($data)
+	{
+		$this->db->where('kd_gudang', $data);
+		$query = $this->db->get('tbl_ingudang');
+		return $query;
+	}
+
+	function edit_gudang($where, $data)
+	{
+		$this->db->where('kd_gudang', $where);
+		$this->db->update('tbl_ingudang', $data);
+	}
+
 	function get_kategori()
 	{
 		$data = $this->db->get('tbl_inkategori');
@@ -60,24 +80,11 @@ Class Inventory_model extends CI_Model
 		$this->db->insert('tbl_inmstproduk', $data);
 	}
 
-	function delete_gudang($data)
+	function get_mstprod($kd)
 	{
-		$this->db->where('kd_gudang', $data);
-		$query = $this->db->delete('tbl_ingudang');
-		return $query;
-	}
-
-	function get_det_gudang($data)
-	{
-		$this->db->where('kd_gudang', $data);
-		$query = $this->db->get('tbl_ingudang');
-		return $query;
-	}
-
-	function edit_gudang($where, $data)
-	{
-		$this->db->where('kd_gudang', $where);
-		$this->db->update('tbl_ingudang', $data);
+		$this->db->where('kd_produk', $kd);
+		$data = $this->db->get('tbl_inmstproduk');
+		return $data;
 	}
 
 	function add_intransmsk($data)
@@ -100,7 +107,7 @@ Class Inventory_model extends CI_Model
 		$this->db->insert('tbl_dettransklr', $data);
 	}
 
-	function update_produk()
+	function update_mststok($kd, $data)
 	{
 		$this->db->where('kd_produk', $kd);
 		$this->db->update('tbl_inmstproduk', $data);
@@ -156,6 +163,47 @@ Class Inventory_model extends CI_Model
 		$this->db->select('*');
 		$this->db->from('tbl_intransklr');
 		$this->db->where('kd_transklr', $kd);
+		$data = $this->db->get();
+		return $data;
+	}
+
+	function get_stokcard()
+	{
+		$this->db->select('*');
+		$this->db->from('tbl_inmstproduk');
+		$this->db->join('tbl_inproduk', 'tbl_inproduk.kd_produk = tbl_inmstproduk.kd_produk');
+		$data = $this->db->get();
+		return $data;
+	}
+
+	function get_det_stokcard($kd)
+	{
+		$this->db->select('*');
+		$this->db->from('tbl_inmstproduk');
+		$this->db->join('tbl_inproduk', 'tbl_inproduk.kd_produk = tbl_inmstproduk.kd_produk');
+		$this->db->where('tbl_inmstproduk.kd_produk', $kd);
+		$data = $this->db->get();
+		return $data;
+	}
+
+	function get_det_produk_delivery_card($kd)
+	{
+		$this->db->select('*');
+		$this->db->from('tbl_intransklr');
+		$this->db->join('tbl_dettransklr', 'tbl_dettransklr.kd_transklr = tbl_intransklr.kd_transklr');
+		$this->db->join('tbl_inproduk', 'tbl_inproduk.kd_produk = tbl_dettransklr.kd_produk');
+		$this->db->where('tbl_dettransklr.kd_produk', $kd);
+		$data = $this->db->get();
+		return $data;
+	}
+
+	function get_det_produk_receipt_card($kd)
+	{
+		$this->db->select('*');
+		$this->db->from('tbl_intransmsk');
+		$this->db->join('tbl_dettransmsk', 'tbl_dettransmsk.kd_transmsk = tbl_intransmsk.kd_transmsk');
+		$this->db->join('tbl_inproduk', 'tbl_inproduk.kd_produk = tbl_dettransmsk.kd_produk');
+		$this->db->where('tbl_dettransmsk.kd_produk', $kd);
 		$data = $this->db->get();
 		return $data;
 	}

@@ -27,6 +27,37 @@ class Inventory extends CI_Controller {
 		}
 	}
 
+	public function html_topbar()
+	{
+		$session_data = $this->session->userdata('logged_in');
+		$data = array(
+			'id' => $session_data['id'],
+			'username' => $session_data['username'],
+			'jabatan' => $session_data['jabatan'],
+			'tgl' => $session_data['tgl']
+		);
+		return $this->load->view('header_v', $data, true);
+	}
+
+	public function html_navigasi()
+	{
+		$session_data = $this->session->userdata('logged_in');
+		$data = array(
+			'id' => $session_data['id'],
+			'username' => $session_data['username'],
+			'jabatan' => $session_data['jabatan'],
+			'tgl' => $session_data['tgl']
+		);
+		return $this->load->view('sidebar_v', $data, true);
+	}
+
+	public function html_footer()
+	{
+		$data = array(//DATA
+			);
+		return $this->load->view('footer_v', $data, true);
+	}
+
 	public function view_gudang()
 	{
 		if($this->session->userdata('logged_in'))
@@ -311,14 +342,26 @@ class Inventory extends CI_Controller {
 			'keterangan' => $this->input->post('txtket'),
 		);
 		for ($i=0; $i < count($this->input->post('txtnmbarang')) ; $i++) { 
+			$kd = $this->input->post('txtkdbarang')[$i];
+			$stokmsk = $this->input->post('txtqty')[$i];
+			$hrgbeli = $this->input->post('txtharga')[$i];
 			$barang[$i] = array(
-				'kd_produk' => $this->input->post('txtkdbarang')[$i],
+				'kd_produk' => $kd,
 				'satuan' => $this->input->post('txtsatuan')[$i],
-				'qty' => $this->input->post('txtqty')[$i],
-				'harga' => $this->input->post('txtharga')[$i],
+				'qty' => $stokmsk,
+				'harga' => $hrgbeli,
 				'jumlah' => $this->input->post('txtjumlah')[$i],
 				'kd_transmsk' => $this->input->post('txtnobukti'),
 				);
+
+			$st = $this->inventory_model->get_mstprod($kd)->row();
+			$stock = $st->stok;			
+			$up_stok = array(
+				'stok' => $stock + $stokmsk,
+				'harga_beli' => $hrgbeli,
+				);
+
+			$this->inventory_model->update_mststok($kd, $up_stok);
 			$this->inventory_model->add_dettransmsk($barang[$i]);
 		}	
 		$this->inventory_model->add_intransmsk($dat);
@@ -395,14 +438,26 @@ class Inventory extends CI_Controller {
 			'keterangan' => $this->input->post('txtket'),
 		);
 		for ($i=0; $i < count($this->input->post('txtnmbarang')) ; $i++) { 
+			$kd = $this->input->post('txtkdbarang')[$i];
+			$stokklr = $this->input->post('txtqty')[$i];
+			$hrgjual = $this->input->post('txtharga')[$i];
 			$barang[$i] = array(
-				'kd_produk' => $this->input->post('txtkdbarang')[$i],
+				'kd_produk' => $kd,
 				'satuan' => $this->input->post('txtsatuan')[$i],
-				'qty' => $this->input->post('txtqty')[$i],
-				'harga' => $this->input->post('txtharga')[$i],
+				'qty' => $stokklr,
+				'harga' => $hrgjual,
 				'jumlah' => $this->input->post('txtjumlah')[$i],
 				'kd_transklr' => $this->input->post('txtnobukti'),
 				);
+
+			$st = $this->inventory_model->get_mstprod($kd)->row();
+			$stock = $st->stok;			
+			$up_stok = array(
+				'stok' => $stock - $stokklr,
+				'harga_jual' => $hrgjual,
+				);
+
+			$this->inventory_model->update_mststok($kd, $up_stok);
 			$this->inventory_model->add_dettransklr($barang[$i]);
 		}	
 		$this->inventory_model->add_intransklr($dat);
@@ -451,35 +506,48 @@ class Inventory extends CI_Controller {
 		}
 	}
 
-	public function html_topbar()
+	public function view_stok_card()
 	{
-		$session_data = $this->session->userdata('logged_in');
-		$data = array(
-			'id' => $session_data['id'],
-			'username' => $session_data['username'],
-			'jabatan' => $session_data['jabatan'],
-			'tgl' => $session_data['tgl']
-		);
-		return $this->load->view('header_v', $data, true);
+		if($this->session->userdata('logged_in'))
+		{
+			$session_data = $this->session->userdata('logged_in');
+			$kartustok = $this->inventory_model->get_stokcard();
+			$komponen = array(
+				'topbar' => $this->html_topbar(),
+				'sidebar' => $this->html_navigasi(),
+				'footer' => $this->html_footer(),
+				'stokcard' => $kartustok->result_array()
+				);
+			$this->load->view('stokcard_v', $komponen);
+		}
+		else
+		{
+			redirect('index.php/login');
+		}
 	}
 
-	public function html_navigasi()
+	public function det_stok_card($kd)
 	{
-		$session_data = $this->session->userdata('logged_in');
-		$data = array(
-			'id' => $session_data['id'],
-			'username' => $session_data['username'],
-			'jabatan' => $session_data['jabatan'],
-			'tgl' => $session_data['tgl']
-		);
-		return $this->load->view('sidebar_v', $data, true);
-	}
-
-	public function html_footer()
-	{
-		$data = array(//DATA
-			);
-		return $this->load->view('footer_v', $data, true);
+		if($this->session->userdata('logged_in'))
+		{
+			$session_data = $this->session->userdata('logged_in');
+			$stokcard = $this->inventory_model->get_det_stokcard($kd);
+			$del = $this->inventory_model->get_det_produk_delivery_card($kd);
+			$rec = $this->inventory_model->get_det_produk_receipt_card($kd);
+ 			$komponen = array(
+				'topbar' => $this->html_topbar(),
+				'sidebar' => $this->html_navigasi(),
+				'footer' => $this->html_footer(),
+				'stokcards' => $stokcard->result_array(),
+				'deliver' => $del->result_array(),
+				'receipt' => $rec->result_array()
+				);
+			$this->load->view('detstokcard_v', $komponen);
+		}
+		else
+		{
+			redirect('index.php/login');
+		}
 	}
 
 }

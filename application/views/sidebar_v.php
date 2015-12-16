@@ -72,7 +72,7 @@
               <li><a href="<?php echo base_url().'index.php/inventory/view_trans_delivery';?>"><i class="fa fa-caret-right fa-fw"> View Product Delivery</i></a></li>
             </ul>
           </li>
-          <li><a href="#"><i class="fa fa-caret-right fa-fw"></i>Stock Card</a></li>
+          <li><a href="<?php echo base_url().'index.php/inventory/view_stok_card';?>"><i class="fa fa-caret-right fa-fw"></i>Stock Card</a></li>
         </ul>
       </li>
       <li class="treeview">

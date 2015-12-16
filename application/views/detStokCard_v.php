@@ -7,7 +7,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>SAG | ADD TRANSACTION</title>
+    <title>SAG | DETAIL STOCK CARD</title>
     <!-- Tell the browser to be responsive to screen width -->
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
     <!-- Bootstrap 3.3.5 -->
@@ -59,7 +59,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
           <ol class="breadcrumb">
             <li><a href="#"><i class="fa fa-dashboard"></i>SAG</a></li>
             <li>Inventory Control</li>
-            <li class="active">Add Product Stock</li>
+            <li class="active">Detail Stock Card</li>
           </ol>
         </section>
 
@@ -68,78 +68,124 @@ scratch. This page gets rid of all links and provides the needed markup only.
           <!-- Your Page Content Here -->
           <div class="box box-info">
                 <div class="box-header with-border">
-                  <h3 class="box-title">Add Transaksi</h3>
+                  <h3 class="box-title">Detail Stock Card</h3>
                 </div><!-- /.box-header -->
                 <!-- form start -->
-                <form class="form-horizontal" method="post" action="<?php echo base_url().'index.php/inventory/do_add_trans';?>">
+                <form class="form-horizontal" method="post" action="#">
+                  <?php foreach ($stokcards as $sc) { ?>
                   <div class="box-body">
                     <div class="form-group">
-                      <label for="kd_gudang" class="col-sm-2 control-label">Kategori</label>
+                      <label for="kd_gudang" class="col-sm-2 control-label">Warehouse Code</label>
                       <div class="col-sm-2">
-                        <select class="form-control" id="kat" onchange="run()" required>
-                          <option value="kategori">Pilih Kategori</option>
-                          <option value="kategori 1">Kategori 1</option>
-                          <option value="kategori 2">Kategori 2</option>
-                        </select>
-                        <input type="hidden" name="cbokat" id="hkat">
+                        <input type="text" class="form-control" name="txtkdgudang" value="<?php echo $sc['kd_gudang'];?>" readonly>                    
                       </div>
                     </div>
                     <div class="form-group">
-                      <label for="kd_gudang" class="col-sm-2 control-label">No Bukti</label>
-                      <div class="col-sm-4">
-                        <input type="text" class="form-control" name="txtnobukti" value="" placeholder="Nomor Bukti" required>                    
-                      </div>
-                    </div>
-                    <div class="form-group">
-                      <label for="kd_gudang" class="col-sm-2 control-label">Tanggal</label>
+                      <label for="kd_gudang" class="col-sm-2 control-label">Category Code</label>
                       <div class="col-sm-2">
-                        <input type="date" class="form-control" name="txttgl" value="" required>
+                        <input type="text" class="form-control" name="txttgl" value="<?php echo $sc['kd_kategori'];?>" readonly>
                       </div>
                     </div>
                     <div class="form-group">
-                      <label for="nama_gudang" class="col-sm-2 control-label">Keterangan</label>
+                      <label for="kd_gudang" class="col-sm-2 control-label">Product Code</label>
+                      <div class="col-sm-2">
+                        <input type="text" class="form-control" name="txttgl" value="<?php echo $sc['kd_produk'];?>" readonly>
+                      </div>
+                    </div>
+                    <div class="form-group">
+                      <label for="kd_gudang" class="col-sm-2 control-label">Product Name</label>
                       <div class="col-sm-3">
-                        <textarea class="form-control" name="txtket" placeholder="Keterangan" required></textarea>
+                        <input type="text" class="form-control" name="txttgl" value="<?php echo $sc['nama_produk'];?>" readonly>
+                      </div>
+                    </div>
+                    <div class="form-group">
+                      <label for="kd_gudang" class="col-sm-2 control-label">Cost Price</label>
+                      <div class="col-sm-2">
+                        <input type="text" class="form-control" name="txttgl" value="<?php echo $sc['harga_beli'];?>" readonly>
+                      </div>
+                    </div>
+                    <div class="form-group">
+                      <label for="kd_gudang" class="col-sm-2 control-label">Unit Price</label>
+                      <div class="col-sm-2">
+                        <input type="text" class="form-control" name="txttgl" value="<?php echo $sc['harga_jual'];?>" readonly>
+                      </div>
+                    </div>
+                    <div class="form-group">
+                      <label for="kd_gudang" class="col-sm-2 control-label">Stock</label>
+                      <div class="col-sm-1">
+                        <input type="text" class="form-control" name="txttgl" value="<?php echo $sc['stok'];?>" readonly>
+                      </div>
+                    </div>
+                    <div class="form-group">
+                      <label for="nama_gudang" class="col-sm-2 control-label">Description</label>
+                      <div class="col-sm-3">
+                        <textarea class="form-control" name="txtket" placeholder="Keterangan" readonly><?php echo $sc['ket_produk'];?></textarea>
                       </div>
                     </div>                    
                   </div><!-- /.box-body -->                  
-                  <table id="" class="table table-bordered table-hover">                                       
+                  <?php } ?>
+                  <h4>Transaksi Barang Masuk</h4>
+                  <table id="" class="table table-bordered table-hover">
                   <thead>
                     <tr>
-                      <th><input type="checkbox" class="check_all" onclick="select_all()"></th>
+                      <th>No Bukti</th>
+                      <th>Tanggal</th>
                       <th>Kode Produk</th>
                       <th>Nama Produk</th>
                       <th>Satuan</th>
-                      <th>Quantity</th>
-                      <th>Harga</th>
-                      <th>Jumlah</th>                      
+                      <th>Qty Masuk</th> 
+                      <th>Harga Beli</th>
+                      <th>Jumlah</th>
                     </tr>
                   </thead>
-                  <tbody>            
+                  <tbody>
+                    <?php foreach ($receipt as $rec) { ?>
                     <tr>
-                      <td><input type="checkbox" class="case"></td>
-                      <td><input type="text" class="form-control" id='txtkdbarang_1' name='txtkdbarang[]'/></td>
-                      <td><input type="text" class="form-control" id='txtnmbarang_1' name='txtnmbarang[]'></td>
-                      <td><input type="text" class="form-control" id='txtsatuan_1' name='txtsatuan[]'></td>
-                      <td><input type="text" class="form-control" id='txtqty_1' name='txtqty[]'></td> 
-                      <td><input type="text" class="form-control" id='txtharga_1' name='txtharga[]' onchange="hitjumlah()"></td>
-                      <td><input type="text" class="form-control" id='txtjumlah_1' name='txtjumlah[]' readonly ></td>
-                    </tr>                   
-                  </tbody>                  
+                      <td><?php echo $rec['kd_transmsk'];?></td>
+                      <td><?php echo $rec['tanggal'];?></td>
+                      <td><?php echo $rec['kd_produk'];?></td>
+                      <td><?php echo $rec['nama_produk'];?></td>
+                      <td><?php echo $rec['satuan'];?></td>
+                      <td><?php echo $rec['qty'];?></td>
+                      <td><?php echo $rec['harga'];?></td>
+                      <td><?php echo $rec['jumlah'];?></td>
+                    </tr>
+                    <?php } ?>                    
+                  </tbody>
+                </table>              
+                <h4>Transaksi Barang Keluar</h4>
+                  <table id="" class="table table-bordered table-hover">
+                  <thead>
+                    <tr>
+                      <th>No Bukti</th>
+                      <th>Tanggal</th>
+                      <th>Kode Produk</th>
+                      <th>Nama Produk</th>
+                      <th>Satuan</th>
+                      <th>Qty Keluar</th> 
+                      <th>Harga Jual</th>
+                      <th>Jumlah</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <?php foreach ($deliver as $del) { ?>
+                    <tr>
+                      <td><?php echo $del['kd_transklr'];?></td>
+                      <td><?php echo $del['tanggal'];?></td>
+                      <td><?php echo $del['kd_produk'];?></td>
+                      <td><?php echo $del['nama_produk'];?></td>
+                      <td><?php echo $del['satuan'];?></td>
+                      <td><?php echo $del['qty'];?></td>
+                      <td><?php echo $del['harga'];?></td>
+                      <td><?php echo $del['jumlah'];?></td>
+                    </tr>
+                    <?php } ?>                    
+                  </tbody>
                 </table>
-                <div class="box-footer">
-                  <a href="#" class="btn btn-primary addmore">+ Tambah</a>
-                  <a href="#" class="btn btn-danger delete">- Hapus</a>                  
-                  <div class="col-sm-3 pull-right">
-                      <input type="text" class="form-control" name="txttot" id="total" readonly>
-                  </div>
-                  <label class="col-sm-2 control-label pull-right">TOTAL : </label>                                    
-                </div>
                   <div class="box-footer">
-                    <button type="submit" class="btn btn-info pull-left">Save</button>
+                    <button class="btn btn-info" onClick="history.go(-1);return true;">Back</button>
                   </div><!-- /.box-footer -->
-                </form>            
-                
+                </form>                            
           </div>
         </section><!-- /.content -->
       </div><!-- /.content-wrapper -->
@@ -200,7 +246,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                   <input type="checkbox" class="pull-right" checked>
                 </label>
                 <p>
-                  Some information about this general settings option 
+                  Some information about this general settings option
                 </p>
               </div><!-- /.form-group -->
             </form>
@@ -217,29 +263,16 @@ scratch. This page gets rid of all links and provides the needed markup only.
     </script>
 
     <script type="text/javascript">
-         
-      function hitjumlah(){
-        var countings = document.getElementsByName('txtjumlah[]').length;
-        for (var i = 1; i <= countings; i++) {
-          var qty = document.getElementById('txtqty_'+i).value;
-          var harga = document.getElementById('txtharga_'+i).value;
-          var has = qty * harga;
-          document.getElementById('txtjumlah_'+i).value = has; 
-        };
-
-        var arr = document.getElementsByName('txtjumlah[]');
-        var tot=0;
-        for(var i=0;i<arr.length;i++){
-            if(parseInt(arr[i].value))
+      function findTotal(){
+      var arr = document.getElementsByName('txtjumlah[]');
+      var tot=0;
+      for(var i=0;i<arr.length;i++){
+          if(parseInt(arr[i].value))
               tot += parseInt(arr[i].value);
-        }
-        document.getElementById('total').value = tot;
       }
-
-      function run()
-      {
-        document.getElementById("hkat").value = document.getElementById("kat").value;
-      }
+      //document.getElementById('total').value = tot;
+      $('#total').text(tot);
+    }     
     </script>
 
     <!-- REQUIRED JS SCRIPTS -->
