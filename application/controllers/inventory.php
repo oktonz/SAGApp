@@ -550,4 +550,77 @@ class Inventory extends CI_Controller {
 		}
 	}
 
+	public function edit_prod($kd)
+	{
+		if($this->session->userdata('logged_in'))
+		{
+			$session_data = $this->session->userdata('logged_in');
+			$gudang = $this->inventory_model->get_gudang();
+			$kategori = $this->inventory_model->get_kategori();
+			$produk = $this->inventory_model->get_det_produk($kd);
+			$komponen = array(
+				'topbar' => $this->html_topbar(),
+				'sidebar' => $this->html_navigasi(),
+				'footer' => $this->html_footer(),
+				'gudang' => $gudang->result_array(),
+				'kategori' => $kategori->result_array(),
+				'produk' => $produk->result_array()
+				);
+			$this->load->view('editProduk_v', $komponen);
+		}
+		else
+		{
+			redirect('index.php/login');
+		}
+	}
+
+	public function do_edit_produk()
+	{
+		$kode = $this->input->post('txtkdproduk');
+		$dat = array(
+			'kd_produk' => $kode,
+			'kd_gudang' => $this->input->post('cbogudang'),
+			'kd_kategori' => $this->input->post('cbokategori'),
+			'nama_produk' => $this->input->post('txtproduk'),
+			'ket_produk' => $this->input->post('txtket')
+			);
+		$this->inventory_model->edit_produk($kode, $dat);
+		redirect('index.php/inventory/view_produk');
+	}
+
+	public function del_produk($kd)
+	{
+		if($this->session->userdata('logged_in'))
+		{
+			$query = $this->inventory_model->delete_produk($kd);
+			if ($query) {
+				redirect('index.php/inventory/view_produk');
+			}
+		}
+		else
+		{
+			redirect('index.php/login');
+		}
+	}
+
+	public function edit_trans_receipt()
+	{
+
+	}
+
+	public function edit_trans_delivery()
+	{
+
+	}
+
+	public function do_edit_trans_receipt()
+	{
+
+	}
+
+	public function do_edit_trans_delivery()
+	{
+		
+	}
+
 }

@@ -70,9 +70,29 @@ Class Inventory_model extends CI_Model
 		return $data;
 	}
 
+	function get_det_produk($kd)
+	{
+		$this->db->where('kd_produk', $kd);
+		$data = $this->db->get('tbl_inproduk');
+		return $data;
+	}
+
 	function add_produk($data)
 	{
 		$this->db->insert('tbl_inproduk', $data);
+	}
+
+	function edit_produk($where, $data)
+	{
+		$this->db->where('kd_produk', $where);
+		$this->db->update('tbl_inproduk', $data);
+	}
+
+	function delete_produk($kd)
+	{
+		$this->db->where('kd_produk', $kd);
+		$query = $this->db->delete('tbl_inproduk');
+		return $query;
 	}
 
 	function add_mstprod($data)

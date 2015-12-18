@@ -92,7 +92,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                         <a href="<?php echo base_url().'index.php/Inventory/edit_gudang/'.$g['kd_gudang'];?>" data-toggle="tooltip" title="Edit">
                           <i class="fa fa-edit fa-fw"></i>
                         </a>
-                        <a href="<?php echo base_url().'index.php/Inventory/do_del_gudang/'.$g['kd_gudang'];?>" data-toggle="tooltip" title="Delete">
+                        <a href="<?php echo base_url().'index.php/Inventory/do_del_gudang/'.$g['kd_gudang'];?>" onclick="return confirm('Yakin Akan dihapus ?');" data-toggle="tooltip" title="Delete">
                           <i class="fa fa-trash fa-fw"></i>
                         </a>
                       </td>
