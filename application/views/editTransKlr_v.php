@@ -76,12 +76,11 @@ scratch. This page gets rid of all links and provides the needed markup only.
                     <div class="form-group">
                       <label for="kd_gudang" class="col-sm-2 control-label">Kategori</label>
                       <div class="col-sm-2">
-                        <select class="form-control" id="kat" onchange="run()" required>
-                          <option value="kategori">Pilih Kategori</option>
-                          <option value="kategori 1">Kategori 1</option>
-                          <option value="kategori 2">Kategori 2</option>
+                        <select class="form-control" autofocus>
+                          <option>Pilih Kategori</option>
+                          <option>Kategori 1</option>
+                          <option>Kategori 2</option>
                         </select>
-                        <input type="hidden" name="cbokat" id="hkat">
                       </div>
                     </div>
                     <div class="form-group">

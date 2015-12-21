@@ -227,5 +227,6 @@ Class Inventory_model extends CI_Model
 		$data = $this->db->get();
 		return $data;
 	}
+
 }
 ?>

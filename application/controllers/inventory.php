@@ -603,14 +603,46 @@ class Inventory extends CI_Controller {
 		}
 	}
 
-	public function edit_trans_receipt()
+	public function edit_trans_receipt($kd)
 	{
-
+		if($this->session->userdata('logged_in'))
+		{
+			$session_data = $this->session->userdata('logged_in');
+			$transMsk = $this->inventory_model->get_det_trans_receipt($kd);
+			$item = $this->inventory_model->get_det_produk_receipt($kd);
+			$komponen = array(
+				'topbar' => $this->html_topbar(),
+				'sidebar' => $this->html_navigasi(),
+				'footer' => $this->html_footer(),
+				'trans' => $transMsk->result_array(),
+				'items' => $item->result_array()
+				);
+			$this->load->view('editTransMsk_v', $komponen);
+		}
+		else
+		{
+			redirect('index.php/login');
+		}
 	}
 
 	public function edit_trans_delivery()
 	{
-
+		if($this->session->userdata('logged_in'))
+		{
+			$session_data = $this->session->userdata('logged_in');
+			//$kategori = $this->inventory_model->get_det_kategori($data);
+			$komponen = array(
+				'topbar' => $this->html_topbar(),
+				'sidebar' => $this->html_navigasi(),
+				'footer' => $this->html_footer(),
+				//'kat' => $kategori->row()
+				);
+			$this->load->view('editTransKlr_v', $komponen);
+		}
+		else
+		{
+			redirect('index.php/login');
+		}
 	}
 
 	public function do_edit_trans_receipt()
