@@ -71,18 +71,21 @@ scratch. This page gets rid of all links and provides the needed markup only.
                   <h3 class="box-title">Edit Transaksi</h3>
                 </div><!-- /.box-header -->
                 <!-- form start -->
-                <form class="form-horizontal" method="post" action="<?php //echo base_url().'index.php/inventory/do_add_trans';?>">
+                <form class="form-horizontal" method="post" action="<?php echo base_url().'index.php/inventory/do_edit_trans_receipt';?>">
                   <?php foreach ($trans as $tm) { ?>                  
+                  <?php $sub = $tm['subtotal'];?>
                   <div class="box-body">
                     <div class="form-group">
                       <label for="kd_gudang" class="col-sm-2 control-label">Kategori</label>
                       <div class="col-sm-2">
-                        <select class="form-control" id="kat" onchange="run()" required>
-                          <option value="kategori">Pilih Kategori</option>
-                          <option value="kategori 1">Kategori 1</option>
-                          <option value="kategori 2">Kategori 2</option>
-                        </select>
-                        <input type="hidden" name="cbokat" id="hkat">
+                        <?php
+                            $select = $tm['kategori'];                                                                                                  
+                            $item = array();                            
+                            foreach ($kategoris as $k) {
+                              $item[$k['kategori_trans']] = $k['kategori_trans'];
+                            }                                                                                                                  
+                          echo form_dropdown('cbokat', $item, $select, 'class="form-control"');
+                        ?>
                       </div>
                     </div>
                     <div class="form-group">
@@ -135,7 +138,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                   <a href="#" class="btn btn-primary addmore">+ Tambah</a>
                   <a href="#" class="btn btn-danger delete">- Hapus</a>                  
                   <div class="col-sm-3 pull-right">
-                      <input type="text" class="form-control" name="txttot" id="total" readonly>
+                      <input type="text" class="form-control" name="txttot" id="total" value="<?php echo $sub;?>" readonly>
                   </div>
                   <label class="col-sm-2 control-label pull-right">TOTAL : </label>                                    
                 </div>

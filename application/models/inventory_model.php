@@ -2,6 +2,12 @@
 
 Class Inventory_model extends CI_Model
 {
+	function get_kattrans()
+	{
+		$data = $this->db->get('tbl_inkattrans');
+		return $data;
+	}
+
 	function add_gudang($data)
 	{
 	   $this->db->insert('tbl_ingudang', $data);
@@ -226,6 +232,18 @@ Class Inventory_model extends CI_Model
 		$this->db->where('tbl_dettransmsk.kd_produk', $kd);
 		$data = $this->db->get();
 		return $data;
+	}
+
+	function update_trans_receipt($where, $data)
+	{
+		$this->db->where('kd_transmsk', $where);
+		$this->db->update('tbl_intransmsk', $data);
+	}
+
+	function update_receipt_items($where, $data)
+	{
+		$this->db->where('kd_produk', $where);
+		$this->db->update('tbl_dettransmsk', $data);
 	}
 
 }

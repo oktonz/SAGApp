@@ -338,7 +338,7 @@ class Inventory extends CI_Controller {
 			'kd_transmsk' => $this->input->post('txtnobukti'),
 			'kategori' => $this->input->post('cbokat'),
 			'tanggal' => $this->input->post('txttgl'),
-			'subtotal' => $this->input->post('lbltot'),
+			'subtotal' => $this->input->post('txttot'),
 			'keterangan' => $this->input->post('txtket'),
 		);
 		for ($i=0; $i < count($this->input->post('txtnmbarang')) ; $i++) { 
@@ -365,7 +365,7 @@ class Inventory extends CI_Controller {
 			$this->inventory_model->add_dettransmsk($barang[$i]);
 		}	
 		$this->inventory_model->add_intransmsk($dat);
-		redirect('index.php/home');
+		redirect('index.php/inventory/view_trans_receipt');
 	}
 
 	public function view_trans_receipt()
@@ -434,7 +434,7 @@ class Inventory extends CI_Controller {
 			'kd_transklr' => $this->input->post('txtnobukti'),
 			'kategori' => $this->input->post('cbokat'),
 			'tanggal' => $this->input->post('txttgl'),
-			'subtotal' => $this->input->post('lbltot'),
+			'subtotal' => $this->input->post('txttot'),
 			'keterangan' => $this->input->post('txtket'),
 		);
 		for ($i=0; $i < count($this->input->post('txtnmbarang')) ; $i++) { 
@@ -461,7 +461,7 @@ class Inventory extends CI_Controller {
 			$this->inventory_model->add_dettransklr($barang[$i]);
 		}	
 		$this->inventory_model->add_intransklr($dat);
-		redirect('index.php/home');
+		redirect('index.php/inventory/view_trans_delivery');
 	}
 
 	public function view_trans_delivery()
@@ -608,12 +608,14 @@ class Inventory extends CI_Controller {
 		if($this->session->userdata('logged_in'))
 		{
 			$session_data = $this->session->userdata('logged_in');
+			$kategories = $this->inventory_model->get_kattrans();
 			$transMsk = $this->inventory_model->get_det_trans_receipt($kd);
 			$item = $this->inventory_model->get_det_produk_receipt($kd);
 			$komponen = array(
 				'topbar' => $this->html_topbar(),
 				'sidebar' => $this->html_navigasi(),
 				'footer' => $this->html_footer(),
+				'kategoris' => $kategories->result_array(),
 				'trans' => $transMsk->result_array(),
 				'items' => $item->result_array()
 				);
@@ -625,17 +627,19 @@ class Inventory extends CI_Controller {
 		}
 	}
 
-	public function edit_trans_delivery()
+	public function edit_trans_delivery($kd)
 	{
 		if($this->session->userdata('logged_in'))
 		{
 			$session_data = $this->session->userdata('logged_in');
-			//$kategori = $this->inventory_model->get_det_kategori($data);
+			$transKlr = $this->inventory_model->get_det_trans_delivery($kd);
+			$item = $this->inventory_model->get_det_produk_delivery($kd);
 			$komponen = array(
 				'topbar' => $this->html_topbar(),
 				'sidebar' => $this->html_navigasi(),
 				'footer' => $this->html_footer(),
-				//'kat' => $kategori->row()
+				'trans' => $transKlr->result_array(),
+				'items' => $item->result_array()
 				);
 			$this->load->view('editTransKlr_v', $komponen);
 		}
@@ -646,8 +650,55 @@ class Inventory extends CI_Controller {
 	}
 
 	public function do_edit_trans_receipt()
-	{
-
+	{		
+		$kode = $this->input->post('txtnobukti');		
+		$dat = array(
+			'kd_transmsk' => $kode,
+			'kategori' => $this->input->post('cbokat'),
+			'tanggal' => $this->input->post('txttgl'),
+			'subtotal' => $this->input->post('txttot'),
+			'keterangan' => $this->input->post('txtket')
+			);
+		$cekqty = $this->inventory_model->get_det_produk_receipt($kode)->result_array();
+		foreach ($cekqty as $key=>$ct) {					
+          $stoktemp[$key] = $ct['qty'];
+          $hrgtemp[$key] = $ct['harga'];
+        }
+		for ($i=0; $i < count($this->input->post('txtnmbarang')) ; $i++) { 
+			$kd = $this->input->post('txtkdbarang')[$i];			  
+			$stokmsk = $this->input->post('txtqty')[$i];
+			$hrgbeli = $this->input->post('txtharga')[$i];
+			$barang[$i] = array(
+				'kd_produk' => $kd,
+				'satuan' => $this->input->post('txtsatuan')[$i],
+				'qty' => $stokmsk,
+				'harga' => $hrgbeli,
+				'jumlah' => $this->input->post('txtjumlah')[$i],
+				'kd_transmsk' => $this->input->post('txtnobukti'),
+				);
+			if ($stoktemp[$i] != $stokmsk) {
+				$st = $this->inventory_model->get_mstprod($kd)->row();
+				$stock = $st->stok;			
+				$up_stok = array(
+					'stok' => $stock + $stokmsk - $stoktemp[$i],
+					'harga_beli' => $hrgbeli,
+					);
+				$this->inventory_model->update_mststok($kd, $up_stok);	
+			}
+			if ($hrgtemp[$i] != $hrgbeli) {
+				$st = $this->inventory_model->get_mstprod($kd)->row();
+				$hrg = $st->harga;			
+				$up_stok = array(
+					'stok' => $stokmsk,
+					'harga_beli' => $hrg + $hrgbeli,
+					);
+				$this->inventory_model->update_mststok($kd, $up_stok);	
+			}
+					
+			$this->inventory_model->update_receipt_items($kd, $barang[$i]);
+		}
+		$this->inventory_model->update_trans_receipt($kode, $dat);		
+		redirect('index.php/inventory/view_trans_receipt');
 	}
 
 	public function do_edit_trans_delivery()

@@ -7,7 +7,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>SAG | ADD TRANSACTION</title>
+    <title>SAG | EDIT TRANSACTION</title>
     <!-- Tell the browser to be responsive to screen width -->
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
     <!-- Bootstrap 3.3.5 -->
@@ -71,37 +71,41 @@ scratch. This page gets rid of all links and provides the needed markup only.
                   <h3 class="box-title">Add Transaksi</h3>
                 </div><!-- /.box-header -->
                 <!-- form start -->
-                <form class="form-horizontal" method="post" action="<?php echo base_url().'index.php/inventory/do_add_trans_klr';?>">
+                <form class="form-horizontal" method="post" action="<?php //echo base_url().'index.php/inventory/do_add_trans_klr';?>">
+                  <?php foreach ($trans as $tk) { ?>                  
+                  <?php $sub = $tk['subtotal'];?>
                   <div class="box-body">
                     <div class="form-group">
                       <label for="kd_gudang" class="col-sm-2 control-label">Kategori</label>
                       <div class="col-sm-2">
-                        <select class="form-control" autofocus>
+                        <select class="form-control">
                           <option>Pilih Kategori</option>
                           <option>Kategori 1</option>
                           <option>Kategori 2</option>
                         </select>
+                        <input type="hidden" name="cbokat" id="hkat">
                       </div>
                     </div>
                     <div class="form-group">
                       <label for="kd_gudang" class="col-sm-2 control-label">No Bukti</label>
                       <div class="col-sm-4">
-                        <input type="text" class="form-control" name="txtnobukti" value="" placeholder="Nomor Bukti" required>                    
+                        <input type="text" class="form-control" name="txtnobukti" value="<?php echo $tk['kd_transklr'];?>" required>                    
                       </div>
                     </div>
                     <div class="form-group">
                       <label for="kd_gudang" class="col-sm-2 control-label">Tanggal</label>
                       <div class="col-sm-2">
-                        <input type="date" class="form-control" name="txttgl" value="" required>
+                        <input type="date" class="form-control" name="txttgl" value="<?php echo $tk['tanggal'];?>" required>
                       </div>
                     </div>
                     <div class="form-group">
                       <label for="nama_gudang" class="col-sm-2 control-label">Keterangan</label>
                       <div class="col-sm-3">
-                        <textarea class="form-control" name="txtket" placeholder="Keterangan" required></textarea>
+                        <textarea class="form-control" name="txtket" placeholder="Keterangan" required><?php echo $tk['keterangan'];?></textarea>
                       </div>
                     </div>                    
-                  </div><!-- /.box-body -->                  
+                  </div><!-- /.box-body -->  
+                  <?php } ?>                  
                   <table id="" class="table table-bordered table-hover">                                       
                   <thead>
                     <tr>
@@ -114,23 +118,25 @@ scratch. This page gets rid of all links and provides the needed markup only.
                       <th>Jumlah</th>                      
                     </tr>
                   </thead>
-                  <tbody>            
+                  <tbody> 
+                    <?php foreach ($items as $key=>$it) { ?>             
                     <tr>
                       <td><input type="checkbox" class="case"></td>
-                      <td><input type="text" class="form-control" id='txtkdbarang_1' name='txtkdbarang[]'/></td>
-                      <td><input type="text" class="form-control" id='txtnmbarang_1' name='txtnmbarang[]'></td>
-                      <td><input type="text" class="form-control" id='txtsatuan_1' name='txtsatuan[]'></td>
-                      <td><input type="text" class="form-control" id='txtqty_1' name='txtqty[]'></td>
-                      <td><input type="text" class="form-control" id='txtharga_1' name='txtharga[]' onchange="hitjumlah()"></td>
-                      <td><input type="text" class="form-control" id='txtjumlah_1' name='txtjumlah[]'></td>
-                    </tr>                   
+                      <td><input type="text" class="form-control" id='txtkdbarang_<?php echo $key+1;?>' name='txtkdbarang[]' value="<?php echo $it['kd_produk'];?>"/></td>
+                      <td><input type="text" class="form-control" id='txtnmbarang_<?php echo $key+1;?>' name='txtnmbarang[]' value="<?php echo $it['nama_produk'];?>"></td>
+                      <td><input type="text" class="form-control" id='txtsatuan_<?php echo $key+1;?>' name='txtsatuan[]' value="<?php echo $it['satuan'];?>"></td>
+                      <td><input type="text" class="form-control" id='txtqty_<?php echo $key+1;?>' name='txtqty[]' onchange="hitjumlah()" value="<?php echo $it['qty'];?>"></td> 
+                      <td><input type="text" class="form-control" id='txtharga_<?php echo $key+1;?>' name='txtharga[]' onchange="hitjumlah()" value="<?php echo $it['harga'];?>"></td>
+                      <td><input type="text" class="form-control" id='txtjumlah_<?php echo $key+1;?>' name='txtjumlah[]' value="<?php echo $it['jumlah'];?>" ></td>
+                    </tr> 
+                    <?php } ?>                  
                   </tbody>                  
                 </table>
                 <div class="box-footer">
                   <a href="#" class="btn btn-primary addmore">+ Tambah</a>
                   <a href="#" class="btn btn-danger delete">- Hapus</a>
                   <div class="col-sm-3 pull-right">
-                      <input type="text" class="form-control" name="txttot" id="total" readonly>
+                      <input type="text" class="form-control" name="txttot" id="total" value="<?php echo $sub;?>" readonly>
                   </div> 
                   <label class="col-sm-1 control-label pull-right">TOTAL : </label>                  
                 </div>
