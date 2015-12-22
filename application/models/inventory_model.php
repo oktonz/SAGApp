@@ -246,5 +246,22 @@ Class Inventory_model extends CI_Model
 		$this->db->update('tbl_dettransmsk', $data);
 	}
 
+	function update_trans_delivery($where, $data)
+	{
+		$this->db->where('kd_transklr', $where);
+		$this->db->update('tbl_intransklr', $data);
+	}
+
+	function update_delivery_items($where, $data)
+	{
+		$this->db->where('kd_produk', $where);
+		$this->db->update('tbl_dettransklr', $data);
+	}
+
+	function delete_trans_receipt($where)
+	{
+		$this->db->where('kd_transmsk', $where);
+		$this->db->delete('tbl_intransmsk');
+	}
 }
 ?>

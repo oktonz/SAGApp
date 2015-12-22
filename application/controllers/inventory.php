@@ -703,7 +703,54 @@ class Inventory extends CI_Controller {
 
 	public function do_edit_trans_delivery()
 	{
-		
+		$kode = $this->input->post('txtnobukti');		
+		$dat = array(
+			'kd_transklr' => $kode,
+			'kategori' => $this->input->post('cbokat'),
+			'tanggal' => $this->input->post('txttgl'),
+			'subtotal' => $this->input->post('txttot'),
+			'keterangan' => $this->input->post('txtket')
+			);
+		$cekqty = $this->inventory_model->get_det_produk_delivery($kode)->result_array();
+		foreach ($cekqty as $key=>$ct) {					
+          $stoktemp[$key] = $ct['qty'];
+          $hrgtemp[$key] = $ct['harga'];
+        }
+		for ($i=0; $i < count($this->input->post('txtnmbarang')) ; $i++) { 
+			$kd = $this->input->post('txtkdbarang')[$i];			  
+			$stokklr = $this->input->post('txtqty')[$i];
+			$hrgjual = $this->input->post('txtharga')[$i];
+			$barang[$i] = array(
+				'kd_produk' => $kd,
+				'satuan' => $this->input->post('txtsatuan')[$i],
+				'qty' => $stokklr,
+				'harga' => $hrgjual,
+				'jumlah' => $this->input->post('txtjumlah')[$i],
+				'kd_transklr' => $this->input->post('txtnobukti'),
+				);
+			if ($stoktemp[$i] != $stokklr) {
+				$st = $this->inventory_model->get_mstprod($kd)->row();
+				$stock = $st->stok;			
+				$up_stok = array(
+					'stok' => $stock - $stokklr + $stoktemp[$i],
+					'harga_jual' => $hrgjual,
+					);
+				$this->inventory_model->update_mststok($kd, $up_stok);	
+			}
+			if ($hrgtemp[$i] != $hrgjual) {
+				$st = $this->inventory_model->get_mstprod($kd)->row();
+				$hrg = $st->harga;			
+				$up_stok = array(
+					//'stok' => $stokklr,
+					'harga_jual' => $hrg + $hrgjual,
+					);
+				$this->inventory_model->update_mststok($kd, $up_stok);	
+			}
+					
+			$this->inventory_model->update_delivery_items($kd, $barang[$i]);
+		}
+		$this->inventory_model->update_trans_delivery($kode, $dat);		
+		redirect('index.php/inventory/view_trans_delivery');
 	}
 
 }

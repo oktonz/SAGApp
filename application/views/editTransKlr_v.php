@@ -71,7 +71,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                   <h3 class="box-title">Add Transaksi</h3>
                 </div><!-- /.box-header -->
                 <!-- form start -->
-                <form class="form-horizontal" method="post" action="<?php //echo base_url().'index.php/inventory/do_add_trans_klr';?>">
+                <form class="form-horizontal" method="post" action="<?php echo base_url().'index.php/inventory/do_edit_trans_delivery';?>">
                   <?php foreach ($trans as $tk) { ?>                  
                   <?php $sub = $tk['subtotal'];?>
                   <div class="box-body">
