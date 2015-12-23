@@ -240,9 +240,10 @@ Class Inventory_model extends CI_Model
 		$this->db->update('tbl_intransmsk', $data);
 	}
 
-	function update_receipt_items($where, $data)
+	function update_receipt_items($where1, $where2, $data)
 	{
-		$this->db->where('kd_produk', $where);
+		$this->db->where('kd_transmsk', $where1);
+		$this->db->or_where('kode', $where2);
 		$this->db->update('tbl_dettransmsk', $data);
 	}
 
@@ -254,7 +255,7 @@ Class Inventory_model extends CI_Model
 
 	function update_delivery_items($where, $data)
 	{
-		$this->db->where('kd_produk', $where);
+		$this->db->where('kd_transklr', $where);
 		$this->db->update('tbl_dettransklr', $data);
 	}
 
@@ -262,6 +263,18 @@ Class Inventory_model extends CI_Model
 	{
 		$this->db->where('kd_transmsk', $where);
 		$this->db->delete('tbl_intransmsk');
+		$this->db->where('kd_transmsk', $where);
+		$query = $this->db->delete('tbl_dettransmsk');
+		return $query;
+	}
+
+	function delete_trans_delivery($where)
+	{
+		$this->db->where('kd_transklr', $where);
+		$this->db->delete('tbl_intransklr');
+		$this->db->where('kd_transklr', $where);
+		$query = $this->db->delete('tbl_dettransklr');
+		return $query;
 	}
 }
 ?>
