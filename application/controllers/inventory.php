@@ -696,7 +696,7 @@ class Inventory extends CI_Controller {
 				$this->inventory_model->update_mststok($kd, $up_stok);	
 			}
 					
-			$this->inventory_model->update_receipt_items($kode1, $indikator[$i], $barang[$i]);
+			$this->inventory_model->update_receipt_items($indikator[$i], $barang[$i]);
 		}
 		$this->inventory_model->update_trans_receipt($kode, $dat);		
 		redirect('index.php/inventory/view_trans_receipt');
@@ -716,6 +716,7 @@ class Inventory extends CI_Controller {
 		foreach ($cekqty as $key=>$ct) {					
           $stoktemp[$key] = $ct['qty'];
           $hrgtemp[$key] = $ct['harga'];
+          $indikator[$key] = $ct['kode'];
         }
 		for ($i=0; $i < count($this->input->post('txtnmbarang')) ; $i++) { 
 			$kd = $this->input->post('txtkdbarang')[$i];			  
@@ -748,7 +749,7 @@ class Inventory extends CI_Controller {
 				$this->inventory_model->update_mststok($kd, $up_stok);	
 			}
 					
-			$this->inventory_model->update_delivery_items($kode, $barang[$i]);
+			$this->inventory_model->update_delivery_items($indikator[$i], $barang[$i]);
 		}
 		$this->inventory_model->update_trans_delivery($kode, $dat);		
 		redirect('index.php/inventory/view_trans_delivery');
@@ -791,7 +792,7 @@ class Inventory extends CI_Controller {
 				$kd_p[$key] = $kp['kd_produk'];
 				$qty_p[$key] = $kp['qty'];
 			}
-			$query1 = $this->inventory_model->delete_trans_delivery($kd);
+			$query = $this->inventory_model->delete_trans_delivery($kd);
 			if ($query) {
 				for ($i=0; $i < $kd_prod->num_rows(); $i++) { 
 					$st = $this->inventory_model->get_mstprod($kd_p[$i])->row();
