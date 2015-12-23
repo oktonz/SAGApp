@@ -98,7 +98,9 @@ scratch. This page gets rid of all links and provides the needed markup only.
                       <td><?php echo $sc['stok'];?></td>
                       <td><?php echo $sc['ket_produk'];?></td>
                       <td style="text-align:center">
-                        <a href="<?php echo base_url().'index.php/Inventory/det_stok_card/'.$sc['kd_produk'];?>" data-toggle="tooltip" title="View"><i class="fa fa-search-plus fa-fw"></i></a>                        
+                        <a href="<?php echo base_url().'index.php/Inventory/det_stok_card/'.$sc['kd_produk'];?>" data-toggle="tooltip" title="View">
+                          <i class="fa fa-search-plus fa-fw"></i>
+                        </a>                        
                       </td>
                     </tr>
                     <?php } ?>

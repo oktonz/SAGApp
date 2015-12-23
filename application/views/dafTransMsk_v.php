@@ -88,7 +88,9 @@ scratch. This page gets rid of all links and provides the needed markup only.
                       <td><?php echo $re['tanggal'];?></td>
                       <td><?php echo $re['keterangan'];?></td>
                       <td>
-                        <a href="<?php echo base_url().'index.php/Inventory/view_det_receipt/'.$re['kd_transmsk'];?>" data-toggle="tooltip" title="View"><i class="fa fa-search-plus fa-fw"></i></a>
+                        <a href="<?php echo base_url().'index.php/Inventory/view_det_receipt/'.$re['kd_transmsk'];?>" data-toggle="tooltip" title="View">
+                          <i class="fa fa-search-plus fa-fw"></i>
+                        </a>
                         <a href="<?php echo base_url().'index.php/Inventory/edit_trans_receipt/'.$re['kd_transmsk'];?>" data-toggle="tooltip" title="Edit">
                           <i class="fa fa-edit fa-fw"></i>
                         </a>
