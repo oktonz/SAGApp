@@ -196,5 +196,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
     <script src="<?php echo base_url().'assets/plugins/datatables/';?>jquery.dataTables.min.js"></script>
     <script src="<?php echo base_url().'assets/plugins/datatables/';?>dataTables.bootstrap.min.js"></script>
     <script src="<?php echo base_url().'assets/dist/js/';?>datatabel.js"></script>
+    <!-- Active Link -->
+    <script src="<?php echo base_url().'assets/dist/js/';?>highlightNav.js"></script>
   </body>
 </html>

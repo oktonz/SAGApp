@@ -7,7 +7,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>SAG | STOCK CARD</title>
+    <title>SAG | Dashboard</title>
     <!-- Tell the browser to be responsive to screen width -->
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
     <!-- Bootstrap 3.3.5 -->
@@ -34,7 +34,17 @@ scratch. This page gets rid of all links and provides the needed markup only.
         <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
     <style type="text/css">
-      #rmvb{border: none;}
+    section > div > h1{
+      text-align: center;
+      -webkit-text-fill-color: white;
+      font-weight: bold;
+      font-size: 40px;
+      -webkit-text-stroke-width: 2px;
+      -webkit-text-stroke-color: black;
+    }
+    #marg {
+      margin-top: 150px;
+    }
     </style>
   </head>
   
@@ -54,72 +64,23 @@ scratch. This page gets rid of all links and provides the needed markup only.
         <!-- Content Header (Page header) -->
         <section class="content-header">
           <h1>
-            Inventory Control
+            Dashboard
             <small>Version 0.1</small>
           </h1>
           <ol class="breadcrumb">
             <li><a href="#"><i class="fa fa-dashboard"></i>SAG</a></li>
-            <li>Inventory Control</li>
-            <li class="active">Stock Card</li>
+            <li class="active">Dashboard</li>
           </ol>
         </section>
 
         <!-- Main content -->
         <section class="content">
+          
           <!-- Your Page Content Here -->
-          <div class="box box-info">
-                <div class="box-header with-border">
-                  <h3 class="box-title">Stock Card</h3>
-                </div><!-- /.box-header -->
-                <!-- form start -->
-                <table id="example2" class="table table-bordered table-hover">
-                  <thead>
-                    <tr>
-                      <th>Product Code</th>
-                      <th>Warehouse Code</th>
-                      <th>Category Code</th>
-                      <th>Product Name</th>                      
-                      <th>Cost Price</th>
-                      <th>Unit Price</th>
-                      <th>Stock</th>
-                      <th>Description</th>
-                      <th style="text-align:center">Action</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <?php foreach ($stokcard as $sc) { ?>
-                    <tr>
-                      <td><?php echo $sc['kd_produk'];?></td>
-                      <td><?php echo $sc['kd_gudang'];?></td>
-                      <td><?php echo $sc['kd_kategori'];?></td>
-                      <td><?php echo $sc['nama_produk'];?></td>
-                      <td><?php echo $sc['harga_beli'];?></td>
-                      <td><?php echo $sc['harga_jual'];?></td>
-                      <td><?php echo $sc['stok'];?></td>
-                      <td><?php echo $sc['ket_produk'];?></td>
-                      <td style="text-align:center">
-                        <a href="<?php echo base_url().'index.php/Inventory/det_stok_card/'.$sc['kd_produk'];?>" data-toggle="tooltip" title="View">
-                          <i class="fa fa-search-plus fa-fw"></i>
-                        </a>                        
-                      </td>
-                    </tr>
-                    <?php } ?>
-                  </tbody>
-                  <tfoot>
-                    <tr>
-                      <th>Product Code</th>
-                      <th>Warehouse Code</th>
-                      <th>Category Code</th>
-                      <th>Product Name</th>                      
-                      <th>Cost Price</th>
-                      <th>Unit Price</th>
-                      <th>Stock</th>
-                      <th>Description</th>
-                      <th>Action</th>                
-                    </tr>
-                  </tfoot>
-                </table>
-          </div>
+          <div class="box box-info" style="background-image:url(<?php echo base_url().'assets/img/bg.jpg';?>);background-size:cover;height:475px;">
+              <h1 id="marg">SAG ACCOUNTING</h1>
+              <h1>HALAMAN UTAMA</h1>          
+          </div>    
         </section><!-- /.content -->
       </div><!-- /.content-wrapper -->
 
@@ -144,7 +105,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                 <a href="javascript::;">
                   <i class="menu-icon fa fa-birthday-cake bg-red"></i>
                   <div class="menu-info">
-                    <h4 class="control-sidebar-subheading">Langdon's Birthday</h4>
+                    <h4 class="control-sidebar-subheading">Test</h4>
                     <p>Will be 23 on April 24th</p>
                   </div>
                 </a>
@@ -201,9 +162,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
     <script src="<?php echo base_url().'assets/dist/js/';?>app.min.js"></script>
     <!-- slimscroll -->
     <script src="<?php echo base_url().'assets/plugins/slimScroll/';?>jquery.slimscroll.min.js"></script>
-     <!-- DataTables -->
-    <script src="<?php echo base_url().'assets/plugins/datatables/';?>jquery.dataTables.min.js"></script>
-    <script src="<?php echo base_url().'assets/plugins/datatables/';?>dataTables.bootstrap.min.js"></script>
-    <script src="<?php echo base_url().'assets/dist/js/';?>datatabel.js"></script>
+    <!-- Active Link -->
+    <script src="<?php echo base_url().'assets/dist/js/';?>highlightNav.js"></script>
   </body>
 </html>

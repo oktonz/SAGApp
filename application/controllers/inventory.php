@@ -19,7 +19,7 @@ class Inventory extends CI_Controller {
 				'sidebar' => $this->html_navigasi(),
 				'footer' => $this->html_footer()
 				);
-			$this->load->view('addgudang_v', $komponen);
+			$this->load->view('inventory/addgudang_v', $komponen);
 		}
 		else
 		{
@@ -36,7 +36,7 @@ class Inventory extends CI_Controller {
 			'jabatan' => $session_data['jabatan'],
 			'tgl' => $session_data['tgl']
 		);
-		return $this->load->view('header_v', $data, true);
+		return $this->load->view('common/header_v', $data, true);
 	}
 
 	public function html_navigasi()
@@ -48,14 +48,14 @@ class Inventory extends CI_Controller {
 			'jabatan' => $session_data['jabatan'],
 			'tgl' => $session_data['tgl']
 		);
-		return $this->load->view('sidebar_v', $data, true);
+		return $this->load->view('common/sidebar_v', $data, true);
 	}
 
 	public function html_footer()
 	{
 		$data = array(//DATA
 			);
-		return $this->load->view('footer_v', $data, true);
+		return $this->load->view('common/footer_v', $data, true);
 	}
 
 	public function view_gudang()
@@ -70,7 +70,7 @@ class Inventory extends CI_Controller {
 				'footer' => $this->html_footer(),
 				'gudang' => $gudang->result_array()
 				);
-			$this->load->view('gudang_v', $komponen);
+			$this->load->view('inventory/gudang_v', $komponen);
 		}
 		else
 		{
@@ -88,7 +88,7 @@ class Inventory extends CI_Controller {
 				'sidebar' => $this->html_navigasi(),
 				'footer' => $this->html_footer()
 				);
-			$this->load->view('addgudang_v', $komponen);
+			$this->load->view('inventory/addgudang_v', $komponen);
 		}
 		else
 		{
@@ -134,7 +134,7 @@ class Inventory extends CI_Controller {
 				'footer' => $this->html_footer(),
 				'gudang' => $gudang->row()
 				);
-			$this->load->view('editgudang_v', $komponen);
+			$this->load->view('inventory/editgudang_v', $komponen);
 		}
 		else
 		{
@@ -166,7 +166,7 @@ class Inventory extends CI_Controller {
 				'footer' => $this->html_footer(),
 				'kategori' => $kategori->result_array()
 				);
-			$this->load->view('kategori_v', $komponen);
+			$this->load->view('inventory/kategori_v', $komponen);
 		}
 		else
 		{
@@ -184,7 +184,7 @@ class Inventory extends CI_Controller {
 				'sidebar' => $this->html_navigasi(),
 				'footer' => $this->html_footer()
 				);
-			$this->load->view('addkategori_v', $komponen);
+			$this->load->view('inventory/addkategori_v', $komponen);
 		}
 		else
 		{
@@ -230,7 +230,7 @@ class Inventory extends CI_Controller {
 				'footer' => $this->html_footer(),
 				'kat' => $kategori->row()
 				);
-			$this->load->view('editkategori_v', $komponen);
+			$this->load->view('inventory/editkategori_v', $komponen);
 		}
 		else
 		{
@@ -264,7 +264,7 @@ class Inventory extends CI_Controller {
 				'gudang' => $gudang->result_array(),
 				'kategori' => $kategori->result_array()
 				);
-			$this->load->view('addprod_v', $komponen);
+			$this->load->view('inventory/addprod_v', $komponen);
 		}
 		else
 		{
@@ -284,7 +284,7 @@ class Inventory extends CI_Controller {
 				'footer' => $this->html_footer(),
 				'produk' => $produk->result_array()
 				);
-			$this->load->view('produk_v', $komponen);
+			$this->load->view('inventory/produk_v', $komponen);
 		}
 		else
 		{
@@ -324,7 +324,7 @@ class Inventory extends CI_Controller {
 				'sidebar' => $this->html_navigasi(),
 				'footer' => $this->html_footer(),				
 				);
-			$this->load->view('addtransmsk_v', $komponen);
+			$this->load->view('inventory/addtransmsk_v', $komponen);
 		}
 		else
 		{
@@ -380,7 +380,7 @@ class Inventory extends CI_Controller {
 				'footer' => $this->html_footer(),
 				'receipt' => $receipt->result_array()
 				);
-			$this->load->view('daftransmsk_v', $komponen);
+			$this->load->view('inventory/daftransmsk_v', $komponen);
 		}
 		else
 		{
@@ -402,7 +402,7 @@ class Inventory extends CI_Controller {
 				'receipt' => $receipt->result_array(),
 				'trans' => $trans->result_array()
 				);
-			$this->load->view('detprodreceipt_v', $komponen);
+			$this->load->view('inventory/detprodreceipt_v', $komponen);
 		}
 		else
 		{
@@ -420,7 +420,7 @@ class Inventory extends CI_Controller {
 				'sidebar' => $this->html_navigasi(),
 				'footer' => $this->html_footer(),				
 				);
-			$this->load->view('addtransklr_v', $komponen);
+			$this->load->view('inventory/addtransklr_v', $komponen);
 		}
 		else
 		{
@@ -476,7 +476,7 @@ class Inventory extends CI_Controller {
 				'footer' => $this->html_footer(),
 				'delivery' => $receipt->result_array()
 				);
-			$this->load->view('daftransklr_v', $komponen);
+			$this->load->view('inventory/daftransklr_v', $komponen);
 		}
 		else
 		{
@@ -498,7 +498,7 @@ class Inventory extends CI_Controller {
 				'delivery' => $receipt->result_array(),
 				'trans' => $trans->result_array()
 				);
-			$this->load->view('detproddelivery_v', $komponen);
+			$this->load->view('inventory/detproddelivery_v', $komponen);
 		}
 		else
 		{
@@ -518,7 +518,7 @@ class Inventory extends CI_Controller {
 				'footer' => $this->html_footer(),
 				'stokcard' => $kartustok->result_array()
 				);
-			$this->load->view('stokcard_v', $komponen);
+			$this->load->view('inventory/stokcard_v', $komponen);
 		}
 		else
 		{
@@ -542,7 +542,7 @@ class Inventory extends CI_Controller {
 				'deliver' => $del->result_array(),
 				'receipt' => $rec->result_array()
 				);
-			$this->load->view('detstokcard_v', $komponen);
+			$this->load->view('inventory/detstokcard_v', $komponen);
 		}
 		else
 		{
@@ -566,7 +566,7 @@ class Inventory extends CI_Controller {
 				'kategori' => $kategori->result_array(),
 				'produk' => $produk->result_array()
 				);
-			$this->load->view('editProduk_v', $komponen);
+			$this->load->view('inventory/editProduk_v', $komponen);
 		}
 		else
 		{
@@ -619,7 +619,7 @@ class Inventory extends CI_Controller {
 				'trans' => $transMsk->result_array(),
 				'items' => $item->result_array()
 				);
-			$this->load->view('editTransMsk_v', $komponen);
+			$this->load->view('inventory/editTransMsk_v', $komponen);
 		}
 		else
 		{
@@ -641,7 +641,7 @@ class Inventory extends CI_Controller {
 				'trans' => $transKlr->result_array(),
 				'items' => $item->result_array()
 				);
-			$this->load->view('editTransKlr_v', $komponen);
+			$this->load->view('inventory/editTransKlr_v', $komponen);
 		}
 		else
 		{

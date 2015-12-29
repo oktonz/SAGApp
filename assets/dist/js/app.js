@@ -206,10 +206,33 @@ $(function () {
     });
   }
 
-  //highlight current / active link
-    $('ul.sidebar-menu li a').each(function () {
-        if ($($(this))[0].href == String(window.location))
-            $(this).parent().addClass('active');
+  //highlight current / active link    
+  var str=location.href.toLowerCase();
+    $('.sidebar-menu li a').each(function() {
+            if (str.indexOf(this.href.toLowerCase()) > -1) {
+        $("li.active").removeClass("active");
+                    $(this).parent().addClass("active"); 
+               }
+    }); 
+    $('li.active').parents().each(function(){
+                          
+          if ($(this).is('li')){
+            $(this).addClass("active"); 
+            }               
+    });
+
+    var str=location.href.toLowerCase();
+    $('.treeview-menu li a').each(function() {
+            if (str.indexOf(this.href.toLowerCase()) > -1) {
+        $("li.active").removeClass("active");
+                    $(this).parent().addClass("active"); 
+               }
+    }); 
+    $('li.active').parents().each(function(){
+                          
+          if ($(this).is('li')){
+            $(this).addClass("active"); 
+            }               
     });
 
   /*

@@ -7,7 +7,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>SAG | ADD WAREHOUSE CODE</title>
+    <title>SAG | ADD CATEGORY</title>
     <!-- Tell the browser to be responsive to screen width -->
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
     <!-- Bootstrap 3.3.5 -->
@@ -57,7 +57,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
           <ol class="breadcrumb">
             <li><a href="#"><i class="fa fa-dashboard"></i>SAG</a></li>
             <li>Inventory Control</li>
-            <li class="active">Add Warehouse</li>
+            <li class="active">Add Category</li>
           </ol>
         </section>
 
@@ -66,21 +66,21 @@ scratch. This page gets rid of all links and provides the needed markup only.
           <!-- Your Page Content Here -->
           <div class="box box-info">
                 <div class="box-header with-border">
-                  <h3 class="box-title">Add Gudang</h3>
+                  <h3 class="box-title">Add Kategori</h3>
                 </div><!-- /.box-header -->
                 <!-- form start -->
-                <form class="form-horizontal" method="post" action="<?php echo base_url().'index.php/inventory/do_add_gudang';?>">
+                <form class="form-horizontal" method="post" action="<?php echo base_url().'index.php/inventory/do_add_kategori';?>">
                   <div class="box-body">
                     <div class="form-group">
-                      <label for="kd_gudang" class="col-sm-2 control-label">Warehouse Code</label>
+                      <label for="kd_gudang" class="col-sm-2 control-label">Category ID</label>
                       <div class="col-sm-3">
-                        <input type="text" class="form-control" name="txtkdgudang" placeholder="Kode Gudang" autofocus>
+                        <input type="text" class="form-control" name="txtkdkategori" placeholder="Kode Kategori" autofocus>
                       </div>
                     </div>
                     <div class="form-group">
-                      <label for="nama_gudang" class="col-sm-2 control-label">Warehouse Name</label>
+                      <label for="nama_gudang" class="col-sm-2 control-label">Category</label>
                       <div class="col-sm-6">
-                        <input type="text" class="form-control" name="txtgudang" placeholder="Nama Gudang">
+                        <input type="text" class="form-control" name="txtkategori" placeholder="Kategori">
                       </div>
                     </div>
                     <div class="form-group">
@@ -176,5 +176,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
     <script src="<?php echo base_url().'assets/dist/js/';?>app.min.js"></script>
     <!-- slimscroll -->
     <script src="<?php echo base_url().'assets/plugins/slimScroll/';?>jquery.slimscroll.min.js"></script>
+    <!-- Active Link -->
+    <script src="<?php echo base_url().'assets/dist/js/';?>highlightNav.js"></script>
   </body>
 </html>

@@ -7,11 +7,13 @@ scratch. This page gets rid of all links and provides the needed markup only.
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>SAG | EDIT CATEGORY</title>
+    <title>SAG | DETAIL PROD DELIVERY</title>
     <!-- Tell the browser to be responsive to screen width -->
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
     <!-- Bootstrap 3.3.5 -->
     <link rel="stylesheet" href="<?php echo base_url().'assets/bootstrap/css/';?>bootstrap.min.css">
+    <!-- MAIN -->
+    <link rel="stylesheet" type="text/css" href="<?php echo base_url().'assets/dist/css/';?>jquery-ui.min.css">
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
     <!-- Ionicons -->
@@ -57,7 +59,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
           <ol class="breadcrumb">
             <li><a href="#"><i class="fa fa-dashboard"></i>SAG</a></li>
             <li>Inventory Control</li>
-            <li class="active">Edit Category</li>
+            <li class="active">Detail Product Delivery</li>
           </ol>
         </section>
 
@@ -66,34 +68,70 @@ scratch. This page gets rid of all links and provides the needed markup only.
           <!-- Your Page Content Here -->
           <div class="box box-info">
                 <div class="box-header with-border">
-                  <h3 class="box-title">Edit Kategori</h3>
+                  <h3 class="box-title">Detail Product Delivery</h3>
                 </div><!-- /.box-header -->
                 <!-- form start -->
-                <form class="form-horizontal" method="post" action="<?php echo base_url().'index.php/inventory/do_edit_kategori';?>">
+                <form class="form-horizontal" method="post" action="#">
+                  <?php foreach ($trans as $tr) { ?>
                   <div class="box-body">
                     <div class="form-group">
-                      <label for="kd_gudang" class="col-sm-2 control-label">Category ID</label>
-                      <div class="col-sm-3">
-                        <input type="text" class="form-control" name="txtkdkategori" placeholder="Kode Kategori" value="<?php echo $kat->kd_kategori;?>" readonly>
-                      </div>
-                    </div>
-                    <div class="form-group">
-                      <label for="nama_gudang" class="col-sm-2 control-label">Category</label>
-                      <div class="col-sm-6">
-                        <input type="text" class="form-control" name="txtkategori" placeholder="Kategori" value="<?php echo $kat->nama_kategori;?>">
-                      </div>
-                    </div>
-                    <div class="form-group">
-                      <label for="keterangan" class="col-sm-2 control-label">Description</label>
+                      <label for="kd_gudang" class="col-sm-2 control-label">No Bukti</label>
                       <div class="col-sm-4">
-                        <textarea name="txtket" class="form-control" rows="4" placeholder="Keterangan"><?php echo $kat->ket_kategori;?></textarea>
+                        <input type="text" class="form-control" name="txtnobukti" value="<?php echo $tr['kd_transklr'];?>" placeholder="Nomor Bukti" autofocus required>                    
                       </div>
                     </div>
-                  </div><!-- /.box-body -->
+                    <div class="form-group">
+                      <label for="kd_gudang" class="col-sm-2 control-label">Tanggal Trans</label>
+                      <div class="col-sm-2">
+                        <input type="date" class="form-control" name="txttgl" value="<?php echo $tr['tanggal'];?>" required>
+                      </div>
+                    </div>
+                    <div class="form-group">
+                      <label for="nama_gudang" class="col-sm-2 control-label">Keterangan</label>
+                      <div class="col-sm-3">
+                        <textarea class="form-control" name="txtket" placeholder="Keterangan" required><?php echo $tr['keterangan'];?></textarea>
+                      </div>
+                    </div>                    
+                  </div><!-- /.box-body -->                  
+                  <?php } ?>
+                  <table id="" class="table table-bordered table-hover">
+                  <thead>
+                    <tr>
+                      <th>Kode Barang</th>
+                      <th>Nama Barang</th>
+                      <th>Satuan</th>
+                      <th>Quantity</th>
+                      <th>Harga</th>
+                      <th>Jumlah</th> 
+                      <th width="10%">Action</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <?php foreach ($delivery as $del) { ?>
+                    <tr>
+                      <td><?php echo $del['kd_produk'];?></td>
+                      <td><?php echo $del['nama_produk'];?></td>
+                      <td><?php echo $del['satuan'];?></td>
+                      <td><?php echo $del['qty'];?></td>
+                      <td><?php echo $del['harga'];?></td>
+                      <td><?php echo $del['jumlah'];?></td>
+                      <td>
+                        <a href="#" data-toggle="tooltip" title="View"><i class="fa fa-search-plus fa-fw"></i></a>
+                        <a href="<?php //echo base_url().'index.php/Inventory/edit_gudang/'.$g['kd_gudang'];?>" data-toggle="tooltip" title="Edit">
+                          <i class="fa fa-edit fa-fw"></i>
+                        </a>
+                        <a href="<?php //echo base_url().'index.php/Inventory/do_del_gudang/'.$g['kd_gudang'];?>" data-toggle="tooltip" title="Delete">
+                          <i class="fa fa-trash fa-fw"></i>
+                        </a>
+                      </td>
+                    </tr>
+                    <?php } ?>                    
+                  </tbody>
+                </table>
                   <div class="box-footer">
-                    <button type="submit" class="btn btn-info pull-left">Save</button>
+                    <button class="btn btn-info" onClick="history.go(-1);return true;">Back</button>
                   </div><!-- /.box-footer -->
-                </form>
+                </form>                            
           </div>
         </section><!-- /.content -->
       </div><!-- /.content-wrapper -->
@@ -166,15 +204,42 @@ scratch. This page gets rid of all links and provides the needed markup only.
       <div class="control-sidebar-bg"></div>
     </div><!-- ./wrapper -->
 
+    <script type="text/javascript">
+      var BASE_URL = "<?php echo base_url();?>";
+    </script>
+
+    <script type="text/javascript">
+      function findTotal(){
+      var arr = document.getElementsByName('txtjumlah[]');
+      var tot=0;
+      for(var i=0;i<arr.length;i++){
+          if(parseInt(arr[i].value))
+              tot += parseInt(arr[i].value);
+      }
+      //document.getElementById('total').value = tot;
+      $('#total').text(tot);
+    }     
+    </script>
+
     <!-- REQUIRED JS SCRIPTS -->
 
     <!-- jQuery 2.1.4 -->
     <script src="<?php echo base_url().'assets/plugins/jQuery/';?>jQuery-2.1.4.min.js"></script>
+    <!-- jQuery UI -->
+    <script src="<?php echo base_url().'assets/plugins/jQueryUI/';?>jQuery-ui.min.js"></script>
     <!-- Bootstrap 3.3.5 -->
     <script src="<?php echo base_url().'assets/bootstrap/js/';?>bootstrap.min.js"></script>
     <!-- AdminLTE App -->
     <script src="<?php echo base_url().'assets/dist/js/';?>app.min.js"></script>
     <!-- slimscroll -->
     <script src="<?php echo base_url().'assets/plugins/slimScroll/';?>jquery.slimscroll.min.js"></script>
+    <!-- DataTables -->
+    <script src="<?php echo base_url().'assets/plugins/datatables/';?>jquery.dataTables.min.js"></script>
+    <script src="<?php echo base_url().'assets/plugins/datatables/';?>dataTables.bootstrap.min.js"></script>
+    <script src="<?php echo base_url().'assets/dist/js/';?>datatabel.js"></script>
+    <!-- Autocomplete-->
+    <script src="<?php echo base_url().'assets/dist/js/';?>auto.js"></script>  
+    <!-- Active Link -->  
+    <script src="<?php echo base_url().'assets/dist/js/';?>highlightNav.js"></script>
   </body>
 </html>

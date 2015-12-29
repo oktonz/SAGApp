@@ -7,7 +7,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>SAG | TRANSAKSI KELUAR</title>
+    <title>SAG | STOCK CARD</title>
     <!-- Tell the browser to be responsive to screen width -->
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
     <!-- Bootstrap 3.3.5 -->
@@ -60,7 +60,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
           <ol class="breadcrumb">
             <li><a href="#"><i class="fa fa-dashboard"></i>SAG</a></li>
             <li>Inventory Control</li>
-            <li class="active">Product Delivery</li>
+            <li class="active">Stock Card</li>
           </ol>
         </section>
 
@@ -69,44 +69,53 @@ scratch. This page gets rid of all links and provides the needed markup only.
           <!-- Your Page Content Here -->
           <div class="box box-info">
                 <div class="box-header with-border">
-                  <h3 class="box-title">Product Delivery</h3>
+                  <h3 class="box-title">Stock Card</h3>
                 </div><!-- /.box-header -->
                 <!-- form start -->
                 <table id="example2" class="table table-bordered table-hover">
                   <thead>
                     <tr>
-                      <th>Kode Trans</th>
-                      <th>Tanggal Trans</th>
-                      <th>Keterangan</th>
-                      <th width="10%">Action</th>
+                      <th>Product Code</th>
+                      <th>Warehouse Code</th>
+                      <th>Category Code</th>
+                      <th>Product Name</th>                      
+                      <th>Cost Price</th>
+                      <th>Unit Price</th>
+                      <th>Stock</th>
+                      <th>Description</th>
+                      <th style="text-align:center">Action</th>
                     </tr>
                   </thead>
                   <tbody>
-                    <?php foreach ($delivery as $de) { ?>
+                    <?php foreach ($stokcard as $sc) { ?>
                     <tr>
-                      <td><?php echo $de['kd_transklr'];?></td>
-                      <td><?php echo $de['tanggal'];?></td>
-                      <td><?php echo $de['keterangan'];?></td>
-                      <td>
-                        <a href="<?php echo base_url().'index.php/Inventory/view_det_delivery/'.$de['kd_transklr'];?>" data-toggle="tooltip" title="View">
+                      <td><?php echo $sc['kd_produk'];?></td>
+                      <td><?php echo $sc['kd_gudang'];?></td>
+                      <td><?php echo $sc['kd_kategori'];?></td>
+                      <td><?php echo $sc['nama_produk'];?></td>
+                      <td><?php echo $sc['harga_beli'];?></td>
+                      <td><?php echo $sc['harga_jual'];?></td>
+                      <td><?php echo $sc['stok'];?></td>
+                      <td><?php echo $sc['ket_produk'];?></td>
+                      <td style="text-align:center">
+                        <a href="<?php echo base_url().'index.php/Inventory/det_stok_card/'.$sc['kd_produk'];?>" data-toggle="tooltip" title="View">
                           <i class="fa fa-search-plus fa-fw"></i>
-                        </a>
-                        <a href="<?php echo base_url().'index.php/Inventory/edit_trans_delivery/'.$de['kd_transklr'];?>" data-toggle="tooltip" title="Edit">
-                          <i class="fa fa-edit fa-fw"></i>
-                        </a>
-                        <a href="<?php echo base_url().'index.php/Inventory/do_delete_trans_delivery/'.$de['kd_transklr'];?>" data-toggle="tooltip" title="Delete">
-                          <i class="fa fa-trash fa-fw"></i>
-                        </a>
+                        </a>                        
                       </td>
                     </tr>
                     <?php } ?>
                   </tbody>
                   <tfoot>
                     <tr>
-                      <th>Kode Trans</th>
-                      <th>Tanggal Trans</th>
-                      <th>Keterangan</th>
-                      <th width="10%">Action</th>                
+                      <th>Product Code</th>
+                      <th>Warehouse Code</th>
+                      <th>Category Code</th>
+                      <th>Product Name</th>                      
+                      <th>Cost Price</th>
+                      <th>Unit Price</th>
+                      <th>Stock</th>
+                      <th>Description</th>
+                      <th>Action</th>                
                     </tr>
                   </tfoot>
                 </table>
@@ -196,5 +205,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
     <script src="<?php echo base_url().'assets/plugins/datatables/';?>jquery.dataTables.min.js"></script>
     <script src="<?php echo base_url().'assets/plugins/datatables/';?>dataTables.bootstrap.min.js"></script>
     <script src="<?php echo base_url().'assets/dist/js/';?>datatabel.js"></script>
+    <!-- Active Link -->
+    <script src="<?php echo base_url().'assets/dist/js/';?>highlightNav.js"></script>
   </body>
 </html>

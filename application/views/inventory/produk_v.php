@@ -7,7 +7,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>SAG | Dashboard</title>
+    <title>SAG | PRODUCT</title>
     <!-- Tell the browser to be responsive to screen width -->
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
     <!-- Bootstrap 3.3.5 -->
@@ -34,17 +34,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
         <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
     <style type="text/css">
-    section > div > h1{
-      text-align: center;
-      -webkit-text-fill-color: white;
-      font-weight: bold;
-      font-size: 40px;
-      -webkit-text-stroke-width: 2px;
-      -webkit-text-stroke-color: black;
-    }
-    #marg {
-      margin-top: 150px;
-    }
+      #rmvb{border: none;}
     </style>
   </head>
   
@@ -64,23 +54,70 @@ scratch. This page gets rid of all links and provides the needed markup only.
         <!-- Content Header (Page header) -->
         <section class="content-header">
           <h1>
-            Dashboard
+            Inventory Control
             <small>Version 0.1</small>
           </h1>
           <ol class="breadcrumb">
             <li><a href="#"><i class="fa fa-dashboard"></i>SAG</a></li>
-            <li class="active">Dashboard</li>
+            <li>Inventory Control</li>
+            <li class="active">Product</li>
           </ol>
         </section>
 
         <!-- Main content -->
         <section class="content">
-          
           <!-- Your Page Content Here -->
-          <div class="box box-info" style="background-image:url(<?php echo base_url().'assets/img/bg.jpg';?>);height:475px">
-              <h1 id="marg">SAG ACCOUNTING</h1>
-              <h1>HALAMAN UTAMA</h1>          
-          </div>    
+          <div class="box box-info">
+                <div class="box-header with-border">
+                  <h3 class="box-title">Warehouse</h3>
+                </div><!-- /.box-header -->
+                <!-- form start -->
+                <table id="example2" class="table table-bordered table-hover">
+                  <thead>
+                    <tr>
+                      <th>Warehouse Id</th>
+                      <th>Category Id</th>
+                      <th>Product Id</th>
+                      <th>Product Name</th>
+                      <th>Description</th>
+                      <th width="10%">Action</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <?php foreach ($produk as $pro) { ?>
+                    <tr>
+                      <td><?php echo $pro['kd_gudang'];?></td>
+                      <td><?php echo $pro['kd_kategori'];?></td>
+                      <td><?php echo $pro['kd_produk'];?></td>
+                      <td><?php echo $pro['nama_produk'];?></td>
+                      <td><?php echo $pro['ket_produk'];?></td>
+                      <td>
+                        <a href="#" data-toggle="tooltip" title="View">
+                          <i class="fa fa-search-plus fa-fw"></i>
+                        </a>
+                        <a href="<?php echo base_url().'index.php/Inventory/edit_prod/'.$pro['kd_produk'];?>" data-toggle="tooltip" title="Edit">
+                          <i class="fa fa-edit fa-fw"></i>
+                        </a>
+                        <a href="<?php echo base_url().'index.php/Inventory/del_produk/'.$pro['kd_produk'];?>" 
+                           onclick="return confirm('Yakin Akan dihapus ?');" data-toggle="tooltip" title="Delete">
+                          <i class="fa fa-trash fa-fw"></i>
+                        </a>
+                      </td>
+                    </tr>
+                    <?php } ?>
+                  </tbody>
+                  <tfoot>
+                    <tr>
+                      <th>Warehouse Id</th>
+                      <th>Category Id</th>
+                      <th>Product Id</th>
+                      <th>Product Name</th>
+                      <th>Description</th>
+                      <th>Action</th>                
+                    </tr>
+                  </tfoot>
+                </table>
+          </div>
         </section><!-- /.content -->
       </div><!-- /.content-wrapper -->
 
@@ -162,5 +199,13 @@ scratch. This page gets rid of all links and provides the needed markup only.
     <script src="<?php echo base_url().'assets/dist/js/';?>app.min.js"></script>
     <!-- slimscroll -->
     <script src="<?php echo base_url().'assets/plugins/slimScroll/';?>jquery.slimscroll.min.js"></script>
+     <!-- DataTables -->
+    <script src="<?php echo base_url().'assets/plugins/datatables/';?>jquery.dataTables.min.js"></script>
+    <script src="<?php echo base_url().'assets/plugins/datatables/';?>dataTables.bootstrap.min.js"></script>
+    <script src="<?php echo base_url().'assets/dist/js/';?>datatabel.js"></script>
+    <!-- Active Link -->
+    <script src="<?php echo base_url().'assets/dist/js/';?>highlightNav.js"></script>
+
+    <!-- END REQUIRED JAVASCRIPT -->
   </body>
 </html>

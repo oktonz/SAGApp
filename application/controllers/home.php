@@ -12,7 +12,7 @@ class Home extends CI_Controller {
 				'sidebar' => $this->html_navigasi(),
 				'footer' => $this->html_footer()
 				);
-			$this->load->view('home_v', $komponen);
+			$this->load->view('common/home_v', $komponen);
 		}
 		else
 		{
@@ -29,7 +29,7 @@ class Home extends CI_Controller {
 			'jabatan' => $session_data['jabatan'],
 			'tgl' => $session_data['tgl']
 		);
-		return $this->load->view('header_v', $data, true);
+		return $this->load->view('common/header_v', $data, true);
 	}
 
 	public function html_navigasi()
@@ -41,14 +41,14 @@ class Home extends CI_Controller {
 			'jabatan' => $session_data['jabatan'],
 			'tgl' => $session_data['tgl']
 		);
-		return $this->load->view('sidebar_v', $data, true);
+		return $this->load->view('common/sidebar_v', $data, true);
 	}
 
 	public function html_footer()
 	{
 		$data = array(//data
 			);
-		return $this->load->view('footer_v', $data, true);
+		return $this->load->view('common/footer_v', $data, true);
 	}
 
 	public function search()
@@ -64,7 +64,7 @@ class Home extends CI_Controller {
 				'footer' => $this->html_footer(),
 				'hasil' => $cari->result_array(),
 				);
-			$this->load->view('search_v', $komponen);
+			$this->load->view('common/search_v', $komponen);
 		}
 		else
 		{
