@@ -21,10 +21,10 @@
           <!-- Menu toggle button -->
           <a href="#" class="dropdown-toggle" data-toggle="dropdown">
             <i class="fa fa-envelope-o"></i>
-            <span class="label label-success">4</span>
+            <span class="label label-success">1</span>
           </a>
           <ul class="dropdown-menu">
-            <li class="header">You have 4 messages</li>
+            <li class="header">You have 1 messages</li>
             <li>
               <!-- inner menu: contains the messages -->
               <ul class="menu">
@@ -36,11 +36,11 @@
                     </div>
                     <!-- Message title and timestamp -->
                     <h4>
-                      Support Team
+                      Testing Team
                       <small><i class="fa fa-clock-o"></i> 5 mins</small>
                     </h4>
                     <!-- The message -->
-                    <p>Why not buy a new awesome theme?</p>
+                    <p>Pesan testing bro..?</p>
                   </a>
                 </li><!-- end message -->
               </ul><!-- /.menu -->
@@ -54,16 +54,16 @@
           <!-- Menu toggle button -->
           <a href="#" class="dropdown-toggle" data-toggle="dropdown">
             <i class="fa fa-bell-o"></i>
-            <span class="label label-warning">10</span>
+            <span class="label label-warning">1</span>
           </a>
           <ul class="dropdown-menu">
-            <li class="header">You have 10 notifications</li>
+            <li class="header">You have 1 notifications</li>
             <li>
               <!-- Inner Menu: contains the notifications -->
               <ul class="menu">
                 <li><!-- start notification -->
                   <a href="#">
-                    <i class="fa fa-users text-aqua"></i> 5 new members joined today
+                    <i class="fa fa-users text-aqua"></i> cuma coba tulis saja bro.
                   </a>
                 </li><!-- end notification -->
               </ul>
@@ -76,44 +76,44 @@
           <!-- Menu Toggle Button -->
           <a href="#" class="dropdown-toggle" data-toggle="dropdown">
             <i class="fa fa-flag-o"></i>
-            <span class="label label-danger">9</span>
+            <span class="label label-danger">0</span>
           </a>
           <ul class="dropdown-menu">
-            <li class="header">You have 9 tasks</li>
+            <li class="header">You have 0 tasks</li>
             <li>
               <!-- Inner menu: contains the tasks -->
               <ul class="menu">
                 <li><!-- Task item -->
-                  <a href="#">
+                  <!--<a href="#">-->
                     <!-- Task title and progress text -->
-                    <h3>
+                    <!--<h3>
                       Design some buttons
                       <small class="pull-right">20%</small>
-                    </h3>
+                    </h3>-->
                     <!-- The progress bar -->
-                    <div class="progress xs">
+                    <!--<div class="progress xs">-->
                       <!-- Change the css width attribute to simulate progress -->
-                      <div class="progress-bar progress-bar-aqua" style="width: 20%" role="progressbar" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100">
+                      <!--<div class="progress-bar progress-bar-aqua" style="width: 20%" role="progressbar" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100">
                         <span class="sr-only">20% Complete</span>
                       </div>
                     </div>
-                  </a>
+                  </a>-->
                 </li>
                 <li><!-- Task item -->
-                  <a href="#">
+                  <!--<a href="#">-->
                     <!-- Task title and progress text -->
-                    <h3>
+                    <!--<h3>
                       Design some buttons
                       <small class="pull-right">20%</small>
-                    </h3>
+                    </h3>-->
                     <!-- The progress bar -->
-                    <div class="progress xs">
+                    <!--<div class="progress xs">-->
                       <!-- Change the css width attribute to simulate progress -->
-                      <div class="progress-bar progress-bar-aqua" style="width: 20%" role="progressbar" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100">
+                      <!--<div class="progress-bar progress-bar-aqua" style="width: 20%" role="progressbar" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100">
                         <span class="sr-only">20% Complete</span>
                       </div>
                     </div>
-                  </a>
+                  </a>-->
                 </li><!-- end task item -->
               </ul>
             </li>
@@ -158,4 +158,67 @@
       </ul>
     </div>
   </nav>
-</header>      
+</header>   
+
+<!-- Control Sidebar -->
+  <aside class="control-sidebar control-sidebar-dark">
+    <!-- Create the tabs -->
+    <ul class="nav nav-tabs nav-justified control-sidebar-tabs">
+      <li class="active"><a href="#control-sidebar-home-tab" data-toggle="tab"><i class="fa fa-home"></i></a></li>
+      <li><a href="#control-sidebar-settings-tab" data-toggle="tab"><i class="fa fa-gears"></i></a></li>
+    </ul>
+    <!-- Tab panes -->
+    <div class="tab-content">
+      <!-- Home tab content -->
+      <div class="tab-pane active" id="control-sidebar-home-tab">
+        <h3 class="control-sidebar-heading">Recent Activity</h3>
+        <ul class="control-sidebar-menu">
+          <li>
+            <a href="javascript::;">
+              <i class="menu-icon fa fa-birthday-cake bg-red"></i>
+              <div class="menu-info">
+                <h4 class="control-sidebar-subheading">Langdon's Birthday</h4>
+                <p>Will be 22 on April 24th</p>
+              </div>
+            </a>
+          </li>
+        </ul><!-- /.control-sidebar-menu -->
+
+        <h3 class="control-sidebar-heading">Tasks Progress</h3>
+        <ul class="control-sidebar-menu">
+          <li>
+            <a href="javascript::;">
+              <h4 class="control-sidebar-subheading">
+                Custom Template Design
+                <span class="label label-danger pull-right">70%</span>
+              </h4>
+              <div class="progress progress-xxs">
+                <div class="progress-bar progress-bar-danger" style="width: 70%"></div>
+              </div>
+            </a>
+          </li>
+        </ul><!-- /.control-sidebar-menu -->
+
+      </div><!-- /.tab-pane -->
+      <!-- Stats tab content -->
+      <div class="tab-pane" id="control-sidebar-stats-tab">Stats Tab Content</div><!-- /.tab-pane -->
+      <!-- Settings tab content -->
+      <div class="tab-pane" id="control-sidebar-settings-tab">
+        <form method="post">
+          <h3 class="control-sidebar-heading">General Settings</h3>
+          <div class="form-group">
+            <label class="control-sidebar-subheading">
+              Report panel usage
+              <input type="checkbox" class="pull-right" checked>
+            </label>
+            <p>
+              Some information about this general settings option
+            </p>
+          </div><!-- /.form-group -->
+        </form>
+      </div><!-- /.tab-pane -->
+    </div>
+  </aside><!-- /.control-sidebar -->
+  <!-- Add the sidebar's background. This div must be placed
+       immediately after the control sidebar -->
+  <div class="control-sidebar-bg"></div>   

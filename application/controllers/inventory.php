@@ -70,7 +70,7 @@ class Inventory extends CI_Controller {
 				'footer' => $this->html_footer(),
 				'gudang' => $gudang->result_array()
 				);
-			$this->load->view('inventory/gudang_v', $komponen);
+			$this->load->view('inventory/dafGudang_v', $komponen);
 		}
 		else
 		{
@@ -166,7 +166,7 @@ class Inventory extends CI_Controller {
 				'footer' => $this->html_footer(),
 				'kategori' => $kategori->result_array()
 				);
-			$this->load->view('inventory/kategori_v', $komponen);
+			$this->load->view('inventory/dafKategori_v', $komponen);
 		}
 		else
 		{
@@ -284,7 +284,7 @@ class Inventory extends CI_Controller {
 				'footer' => $this->html_footer(),
 				'produk' => $produk->result_array()
 				);
-			$this->load->view('inventory/produk_v', $komponen);
+			$this->load->view('inventory/dafProduk_v', $komponen);
 		}
 		else
 		{

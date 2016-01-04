@@ -81,7 +81,7 @@
           <li>
             <a href="#"><i class="fa fa-arrow-right fa-fw"></i>Supplier <i class="fa fa-angle-left pull-right"></i></a>
             <ul class="treeview-menu">
-              <li><a href="#"><i class="fa fa-hand-o-right fa-fw"> Add Supplier</i></a></li>
+              <li><a href="<?php echo base_url().'index.php/purchasing/add_supp';?>"><i class="fa fa-hand-o-right fa-fw"> Add Supplier</i></a></li>
               <li><a href="#"><i class="fa fa-hand-o-right fa-fw"> View Supplier</i></a></li>
             </ul>
           </li>
@@ -98,7 +98,7 @@
           <li>
             <a href="#"><i class="fa fa-arrow-right fa-fw"></i>Customer <i class="fa fa-angle-left pull-right"></i></a>
             <ul class="treeview-menu">
-              <li><a href="#"><i class="fa fa-hand-o-right fa-fw"> Add Customer</i></a></li>
+              <li><a href="<?php echo base_url().'index.php/invoicing/add_cust';?>"><i class="fa fa-hand-o-right fa-fw"> Add Customer</i></a></li>
               <li><a href="#"><i class="fa fa-hand-o-right fa-fw"> View Customer</i></a></li>
             </ul>
           </li>
