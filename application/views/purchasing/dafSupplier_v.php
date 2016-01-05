@@ -7,7 +7,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>SAG | WAREHOUSE</title>
+    <title>SAG | SUPPLIER</title>
     <!-- Tell the browser to be responsive to screen width -->
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
     <!-- Bootstrap 3.3.5 -->
@@ -54,13 +54,13 @@ scratch. This page gets rid of all links and provides the needed markup only.
         <!-- Content Header (Page header) -->
         <section class="content-header">
           <h1>
-            Inventory Control
+            Purchasing
             <small>Version 0.1</small>
           </h1>
           <ol class="breadcrumb">
             <li><a href="#"><i class="fa fa-dashboard"></i>SAG</a></li>
-            <li>Inventory Control</li>
-            <li class="active">WAREHOUSE</li>
+            <li>Purchasing</li>
+            <li class="active">SUPPLIER</li>
           </ol>
         </section>
 
@@ -69,32 +69,38 @@ scratch. This page gets rid of all links and provides the needed markup only.
           <!-- Your Page Content Here -->
           <div class="box box-info">
                 <div class="box-header with-border">
-                  <h3 class="box-title">Warehouse</h3>
+                  <h3 class="box-title">Supplier</h3>
                 </div><!-- /.box-header -->
                 <!-- form start -->
                 <table id="example2" class="table table-bordered table-hover">
                   <thead>
                     <tr>
-                      <th>Warehouse Id</th>
-                      <th>Warehouse</th>
-                      <th>Description</th>
+                      <th>Kode Supplier</th>
+                      <th>Nama Supplier</th>
+                      <th>Nama Perusahaan</th>
+                      <th>Alamat</th>
+                      <th>Kota</th>
+                      <th>No Telepon</th>
                       <th width="10%">Action</th>
                     </tr>
                   </thead>
                   <tbody>
-                    <?php foreach ($gudang as $g) { ?>
+                    <?php foreach ($suppliers as $sups) { ?>
                     <tr>
-                      <td><?php echo $g['kd_gudang'];?></td>
-                      <td><?php echo $g['nama_gudang'];?></td>
-                      <td><?php echo $g['ket_gudang'];?></td>
+                      <td><?php echo $sups['kd_sup'];?></td>
+                      <td><?php echo $sups['nama_sup'];?></td>
+                      <td><?php echo $sups['nama_perusahaan'];?></td>
+                      <td><?php echo $sups['alamat'];?></td>
+                      <td><?php echo $sups['kota'];?></td>
+                      <td><?php echo $sups['telp'];?></td>
                       <td>
                         <a href="#" data-toggle="tooltip" title="View">
                           <i class="fa fa-search-plus fa-fw"></i>
                         </a>
-                        <a href="<?php echo base_url().'index.php/Inventory/edit_gudang/'.$g['kd_gudang'];?>" data-toggle="tooltip" title="Edit">
+                        <a href="<?php //echo base_url().'index.php/Inventory/edit_gudang/'.$g['kd_gudang'];?>" data-toggle="tooltip" title="Edit">
                           <i class="fa fa-edit fa-fw"></i>
                         </a>
-                        <a href="<?php echo base_url().'index.php/Inventory/do_del_gudang/'.$g['kd_gudang'];?>" 
+                        <a href="<?php //echo base_url().'index.php/Inventory/do_del_gudang/'.$g['kd_gudang'];?>" 
                            onclick="return confirm('Yakin Akan dihapus ?');" data-toggle="tooltip" title="Delete">
                           <i class="fa fa-trash fa-fw"></i>
                         </a>
@@ -104,9 +110,12 @@ scratch. This page gets rid of all links and provides the needed markup only.
                   </tbody>
                   <tfoot>
                     <tr>
-                      <th>Warehouse id</th>
-                      <th>Warehouse</th>
-                      <th>Description</th> 
+                      <th>Kode Supplier</th>
+                      <th>Nama Supplier</th>
+                      <th>Nama Perusahaan</th>
+                      <th>Alamat</th>
+                      <th>Kota</th>
+                      <th>No Telepon</th>
                       <th>Action</th>                
                     </tr>
                   </tfoot>
@@ -118,69 +127,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
       <!-- Main Footer -->
         <?php echo $footer;?>
       <!-- End Footer -->
-
-      <!-- Control Sidebar -->
-      <aside class="control-sidebar control-sidebar-dark">
-        <!-- Create the tabs -->
-        <ul class="nav nav-tabs nav-justified control-sidebar-tabs">
-          <li class="active"><a href="#control-sidebar-home-tab" data-toggle="tab"><i class="fa fa-home"></i></a></li>
-          <li><a href="#control-sidebar-settings-tab" data-toggle="tab"><i class="fa fa-gears"></i></a></li>
-        </ul>
-        <!-- Tab panes -->
-        <div class="tab-content">
-          <!-- Home tab content -->
-          <div class="tab-pane active" id="control-sidebar-home-tab">
-            <h3 class="control-sidebar-heading">Recent Activity</h3>
-            <ul class="control-sidebar-menu">
-              <li>
-                <a href="javascript::;">
-                  <i class="menu-icon fa fa-birthday-cake bg-red"></i>
-                  <div class="menu-info">
-                    <h4 class="control-sidebar-subheading">Langdon's Birthday</h4>
-                    <p>Will be 23 on April 24th</p>
-                  </div>
-                </a>
-              </li>
-            </ul><!-- /.control-sidebar-menu -->
-
-            <h3 class="control-sidebar-heading">Tasks Progress</h3>
-            <ul class="control-sidebar-menu">
-              <li>
-                <a href="javascript::;">
-                  <h4 class="control-sidebar-subheading">
-                    Custom Template Design
-                    <span class="label label-danger pull-right">70%</span>
-                  </h4>
-                  <div class="progress progress-xxs">
-                    <div class="progress-bar progress-bar-danger" style="width: 70%"></div>
-                  </div>
-                </a>
-              </li>
-            </ul><!-- /.control-sidebar-menu -->
-
-          </div><!-- /.tab-pane -->
-          <!-- Stats tab content -->
-          <div class="tab-pane" id="control-sidebar-stats-tab">Stats Tab Content</div><!-- /.tab-pane -->
-          <!-- Settings tab content -->
-          <div class="tab-pane" id="control-sidebar-settings-tab">
-            <form method="post">
-              <h3 class="control-sidebar-heading">General Settings</h3>
-              <div class="form-group">
-                <label class="control-sidebar-subheading">
-                  Report panel usage
-                  <input type="checkbox" class="pull-right" checked>
-                </label>
-                <p>
-                  Some information about this general settings option
-                </p>
-              </div><!-- /.form-group -->
-            </form>
-          </div><!-- /.tab-pane -->
-        </div>
-      </aside><!-- /.control-sidebar -->
-      <!-- Add the sidebar's background. This div must be placed
-           immediately after the control sidebar -->
-      <div class="control-sidebar-bg"></div>
+      
     </div><!-- ./wrapper -->
 
     <!-- REQUIRED JS SCRIPTS -->

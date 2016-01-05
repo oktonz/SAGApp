@@ -11,15 +11,22 @@ class Purchasing extends CI_Controller {
 
 	public function index()
 	{
+		//index function
+	}
+
+	public function view_supplier()
+	{
 		if($this->session->userdata('logged_in'))
 		{
 			$session_data = $this->session->userdata('logged_in');
+			$sup = $this->purchasing_model->get_all_sup();
 			$komponen = array(
 				'topbar' => $this->html_topbar(),
 				'sidebar' => $this->html_navigasi(),
-				'footer' => $this->html_footer()
+				'footer' => $this->html_footer(),
+				'suppliers' => $sup->result_array()
 				);
-			$this->load->view('inventory/addgudang_v', $komponen);
+			$this->load->view('purchasing/dafSupplier_v', $komponen);
 		}
 		else
 		{
@@ -38,6 +45,27 @@ class Purchasing extends CI_Controller {
 				'footer' => $this->html_footer()
 				);
 			$this->load->view('purchasing/addSupplier_v', $komponen);
+		}
+		else
+		{
+			redirect('index.php/login');
+		}
+	}
+
+	public function do_add_supp()
+	{
+		if($this->session->userdata('logged_in'))
+		{
+			$dat = array(
+			//'kd_sup' => $this->input->post(''),
+			'nama_sup' => $this->input->post('txtsup'),
+			'nama_perusahaan' => $this->input->post('txtperusahaan'),
+			'alamat' => $this->input->post('txtalamat'),
+			'kota' => $this->input->post('txtkota'),
+			'telp' => $this->input->post('txttelp'),
+			);
+			$this->purchasing_model->add_supplier($dat);
+			redirect('index.php/purchasing/view_supplier');
 		}
 		else
 		{

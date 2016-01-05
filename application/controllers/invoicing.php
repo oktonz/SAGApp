@@ -11,15 +11,22 @@ class Invoicing extends CI_Controller {
 
 	public function index()
 	{
+		//index function
+	}
+
+	public function view_customers()
+	{
 		if($this->session->userdata('logged_in'))
 		{
 			$session_data = $this->session->userdata('logged_in');
+			$cust = $this->invoicing_model->get_all_cust();
 			$komponen = array(
 				'topbar' => $this->html_topbar(),
 				'sidebar' => $this->html_navigasi(),
-				'footer' => $this->html_footer()
+				'footer' => $this->html_footer(),
+				'customers' => $cust->result_array()
 				);
-			$this->load->view('inventory/addgudang_v', $komponen);
+			$this->load->view('invoicing/dafCustomer_v', $komponen);
 		}
 		else
 		{
@@ -38,6 +45,27 @@ class Invoicing extends CI_Controller {
 				'footer' => $this->html_footer()
 				);
 			$this->load->view('invoicing/addCustomer_v', $komponen);
+		}
+		else
+		{
+			redirect('index.php/login');
+		}
+	}
+
+	public function do_add_cust()
+	{
+		if($this->session->userdata('logged_in'))
+		{
+			$dat = array(
+			//'kd_cust' => $this->input->post(''),
+			'nama_cust' => $this->input->post('txtcust'),
+			'nama_perusahaan' => $this->input->post('txtperusahaan'),
+			'alamat' => $this->input->post('txtalamat'),
+			'kota' => $this->input->post('txtkota'),
+			'telp' => $this->input->post('txttelp'),
+			);
+			$this->invoicing_model->add_customers($dat);
+			redirect('index.php/invoicing/view_customers');
 		}
 		else
 		{
