@@ -124,8 +124,27 @@
           <i class="fa fa-angle-left pull-right"></i>
         </a>
         <ul class="treeview-menu">
-          <li><a href="#"><i class="fa fa-arrow-right fa-fw"></i>Jurnal Umum 1</a></li>
-          <li><a href="#"><i class="fa fa-arrow-right fa-fw"></i>Jurnal Umum 2</a></li>
+          <li>
+            <a href="#"><i class="fa fa-arrow-right fa-fw"></i>Department <i class="fa fa-angle-left pull-right"></i></a>
+            <ul class="treeview-menu">
+              <li><a href="<?php echo base_url().'index.php/gledger/add_gl_department';?>"><i class="fa fa-hand-o-right fa-fw"> Add Department</i></a></li>
+              <li><a href="<?php echo base_url().'index.php/gledger/view_gl_department';?>"><i class="fa fa-hand-o-right fa-fw"> View Department</i></a></li>
+            </ul>
+          </li>
+          <li>
+            <a href="#"><i class="fa fa-arrow-right fa-fw"></i>Category <i class="fa fa-angle-left pull-right"></i></a>
+            <ul class="treeview-menu">
+              <li><a href="<?php echo base_url().'index.php/gledger/add_gl_category';?>"><i class="fa fa-hand-o-right fa-fw"> Add Category</i></a></li>
+              <li><a href="<?php echo base_url().'index.php/gledger/view_gl_category';?>"><i class="fa fa-hand-o-right fa-fw"> View Category</i></a></li>
+            </ul>
+          </li>
+          <li>
+            <a href="#"><i class="fa fa-arrow-right fa-fw"></i>GL Account <i class="fa fa-angle-left pull-right"></i></a>
+            <ul class="treeview-menu">
+              <li><a href="#"><i class="fa fa-hand-o-right fa-fw"> Add GL</i></a></li>
+              <li><a href="#"><i class="fa fa-hand-o-right fa-fw"> View GL</i></a></li>
+            </ul>
+          </li>          
         </ul>
       </li>
       <li class="treeview">
@@ -134,8 +153,9 @@
           <i class="fa fa-angle-left pull-right"></i>
         </a>
         <ul class="treeview-menu">
-          <li><a href="#"><i class="fa fa-arrow-right fa-fw"></i>Submenu 1</a></li>
-          <li><a href="#"><i class="fa fa-arrow-right fa-fw"></i>Submenu 2</a></li>
+          <li><a href="#"><i class="fa fa-arrow-right fa-fw"></i>1</a></li>
+          <li><a href="#"><i class="fa fa-arrow-right fa-fw"></i>2</a></li>
+          <li><a href="#"><i class="fa fa-arrow-right fa-fw"></i>3</a></li>
         </ul>
       </li>
     </ul><!-- /.sidebar-menu -->
