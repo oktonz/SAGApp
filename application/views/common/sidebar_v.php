@@ -141,8 +141,8 @@
           <li>
             <a href="#"><i class="fa fa-arrow-right fa-fw"></i>GL Account <i class="fa fa-angle-left pull-right"></i></a>
             <ul class="treeview-menu">
-              <li><a href="#"><i class="fa fa-hand-o-right fa-fw"> Add GL</i></a></li>
-              <li><a href="#"><i class="fa fa-hand-o-right fa-fw"> View GL</i></a></li>
+              <li><a href="<?php echo base_url().'index.php/gLedger/add_gl_akun';?>"><i class="fa fa-hand-o-right fa-fw"> Add GL</i></a></li>
+              <li><a href="<?php echo base_url().'index.php/gLedger/view_gl_akun';?>"><i class="fa fa-hand-o-right fa-fw"> View GL</i></a></li>
             </ul>
           </li>          
         </ul>

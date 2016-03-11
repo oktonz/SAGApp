@@ -63,5 +63,16 @@ Class Gledger_model extends CI_Model
 		$res = $this->db->get('tbl_glkategori');
 		return $res;
 	}
+
+	function get_all_account()
+	{
+		$data = $this->db->get('tbl_glmst');
+		return $data;
+	}
+
+	function add_account($data)
+	{
+		$this->db->insert('tbl_glmst', $data);
+	}
 }
 ?>

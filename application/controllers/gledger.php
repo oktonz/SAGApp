@@ -245,6 +245,77 @@ class Gledger extends CI_Controller {
 		}
 	}
 
+	public function view_gl_akun()
+	{
+		if($this->session->userdata('logged_in'))
+		{
+			$session_data = $this->session->userdata('logged_in');
+			$acc = $this->gledger_model->get_all_account();
+			$komponen = array(
+				'topbar' => $this->html_topbar(),
+				'sidebar' => $this->html_navigasi(),
+				'footer' => $this->html_footer(),
+				'gledger' => $acc->result_array()
+				);
+			$this->load->view('gLedger/dafAkunGl_v', $komponen);
+		}
+		else
+		{
+			redirect('index.php/login');
+		}
+	}
+
+	public function add_gl_akun()
+	{
+		if($this->session->userdata('logged_in'))
+		{
+			$session_data = $this->session->userdata('logged_in');
+			$komponen = array(
+				'topbar' => $this->html_topbar(),
+				'sidebar' => $this->html_navigasi(),
+				'footer' => $this->html_footer()
+				);
+			$this->load->view('gLedger/addAkunGl_v', $komponen);
+		}
+		else
+		{
+			redirect('index.php/login');
+		}
+	}
+
+	public function do_add_akun_gl()
+	{
+		if($this->session->userdata('logged_in'))
+		{
+			$dat = array(
+			'kode_gl' => $this->input->post('txtkodegl'),
+			'nama_gl' => $this->input->post('txtnamagl'),
+			'saldo_awal' => $this->input->post('txtsaldogl'),			
+			);
+			$this->gledger_model->add_account($dat);
+			redirect('index.php/gLedger/view_gl_akun');
+		}
+		else
+		{
+			redirect('index.php/login');
+		}
+	}
+
+	public function edit_akun_gl()
+	{
+
+	}
+
+	public function do_edit_akun_gl()
+	{
+
+	}
+
+	public function do_del_akun_gl()
+	{
+
+	}
+
 	public function html_topbar()
 	{
 		$session_data = $this->session->userdata('logged_in');

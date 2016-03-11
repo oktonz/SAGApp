@@ -7,7 +7,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>SAG | ADD GL Account</title>
+    <title>SAG | GL Account</title>
     <!-- Tell the browser to be responsive to screen width -->
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
     <!-- Bootstrap 3.3.5 -->
@@ -33,6 +33,9 @@ scratch. This page gets rid of all links and provides the needed markup only.
         <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
         <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
+    <style type="text/css">
+      #rmvb{border: none;}
+    </style>
   </head>
   
   <body class="hold-transition skin-green fixed sidebar-mini">
@@ -57,7 +60,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
           <ol class="breadcrumb">
             <li><a href="#"><i class="fa fa-dashboard"></i>SAG</a></li>
             <li>General Ledger</li>
-            <li class="active">Add Department</li>
+            <li class="active">GL Account</li>
           </ol>
         </section>
 
@@ -66,34 +69,48 @@ scratch. This page gets rid of all links and provides the needed markup only.
           <!-- Your Page Content Here -->
           <div class="box box-info">
                 <div class="box-header with-border">
-                  <h3 class="box-title">Add Department</h3>
+                  <h3 class="box-title">GL Account</h3>
                 </div><!-- /.box-header -->
                 <!-- form start -->
-                <form class="form-horizontal" method="post" action="<?php echo base_url().'index.php/gledger/do_add_gl_department';?>">
-                  <div class="box-body">
-                    <div class="form-group">
-                      <label for="kd_department" class="col-sm-2 control-label">Department Code</label>
-                      <div class="col-sm-3">
-                        <input type="text" class="form-control" name="txtkddepartment" placeholder="Kode Department" autofocus>
-                      </div>
-                    </div>
-                    <div class="form-group">
-                      <label for="nama_department" class="col-sm-2 control-label">Department Name</label>
-                      <div class="col-sm-6">
-                        <input type="text" class="form-control" name="txtdepartment" placeholder="Nama Department">
-                      </div>
-                    </div>
-                    <div class="form-group">
-                      <label for="keterangan" class="col-sm-2 control-label">Description</label>
-                      <div class="col-sm-4">
-                        <textarea name="txtket" class="form-control" rows="4" placeholder="Keterangan"></textarea>
-                      </div>
-                    </div>
-                  </div><!-- /.box-body -->
-                  <div class="box-footer">
-                    <button type="submit" class="btn btn-info pull-left">Save</button>
-                  </div><!-- /.box-footer -->
-                </form>
+                <table id="example2" class="table table-bordered table-hover">
+                  <thead>
+                    <tr>
+                      <th>Kode GL</th>
+                      <th>Nama GL</th>
+                      <th>Saldo Awal</th>
+                      <th width="10%">Action</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <?php foreach ($gledger as $gl) { ?>
+                    <tr>
+                      <td><?php echo $gl['kode_gl'];?></td>                      
+                      <td><?php echo $gl['nama_gl'];?></td>
+                      <td><?php echo $gl['saldo_awal'];?></td>
+                      <td>
+                        <a href="#" data-toggle="tooltip" title="View">
+                          <i class="fa fa-search-plus fa-fw"></i>
+                        </a>
+                        <a href="<?php //echo base_url().'index.php/Gledger/edit_gl_department/'.$deps['kd_department'];?>" data-toggle="tooltip" title="Edit">
+                          <i class="fa fa-edit fa-fw"></i>
+                        </a>
+                        <a href="<?php //echo base_url().'index.php/Gledger/do_del_gl_department/'.$deps['kd_department'];?>" 
+                           onclick="return confirm('Yakin Akan dihapus ?');" data-toggle="tooltip" title="Delete">
+                          <i class="fa fa-trash fa-fw"></i>
+                        </a>
+                      </td>
+                    </tr>
+                    <?php } ?>
+                  </tbody>
+                  <tfoot>
+                    <tr>
+                      <th>Kode GL</th>
+                      <th>Nama GL</th>
+                      <th>Saldo Awal</th>
+                      <th>Action</th>                
+                    </tr>
+                  </tfoot>
+                </table>
           </div>
         </section><!-- /.content -->
       </div><!-- /.content-wrapper -->
@@ -101,7 +118,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
       <!-- Main Footer -->
         <?php echo $footer;?>
       <!-- End Footer -->
-
+      
     </div><!-- ./wrapper -->
 
     <!-- REQUIRED JS SCRIPTS -->
@@ -114,6 +131,10 @@ scratch. This page gets rid of all links and provides the needed markup only.
     <script src="<?php echo base_url().'assets/dist/js/';?>app.min.js"></script>
     <!-- slimscroll -->
     <script src="<?php echo base_url().'assets/plugins/slimScroll/';?>jquery.slimscroll.min.js"></script>
+     <!-- DataTables -->
+    <script src="<?php echo base_url().'assets/plugins/datatables/';?>jquery.dataTables.min.js"></script>
+    <script src="<?php echo base_url().'assets/plugins/datatables/';?>dataTables.bootstrap.min.js"></script>
+    <script src="<?php echo base_url().'assets/dist/js/';?>datatabel.js"></script>
     <!-- Active Link -->
     <script src="<?php echo base_url().'assets/dist/js/';?>highlightNav.js"></script>
   </body>
